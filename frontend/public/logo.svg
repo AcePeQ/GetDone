@@ -5,7 +5,7 @@
   xmlns="http://www.w3.org/2000/svg"
 >
 
-  <rect width="240" height="60" fill="#1a1a1a" />
+  <rect width="240" height="60" fill="transparent" />
 
   <defs>
     <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -35,7 +35,6 @@
     font-weight="700"
     fill="#ffffff"
   >
-    Get
-    <tspan fill="#7c3aed">Done</tspan>
+    Get<tspan fill="#7c3aed">Done</tspan>
   </text>
 </svg>

@@ -30,12 +30,12 @@
   <text
     x="60"
     y="38"
-    font-family="system-ui, -apple-system, sans-serif"
+    font-family="Inter, sans-serif"
     font-size="24"
-    font-weight="700"
+    font-weight="600"
     fill="#ffffff"
+    style="display: flex; align-items: center; padding: 0; margin: 0;"
   >
-    Get
-    <tspan fill="#7c3aed">Done</tspan>
+    Get<tspan fill="#7c3aed">Done</tspan>
   </text>
 </svg>
