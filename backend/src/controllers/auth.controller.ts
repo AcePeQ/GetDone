@@ -47,13 +47,12 @@ export async function register(req: Request, res: Response) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const findUserByEmail = await User.findOne({ email: trimmingEmail });
-    const findUserByUsername = await User.findOne({
-      username: trimmingUsername,
+    const findUser = await User.findOne({
+      $or: [{ email: trimmingEmail }, { username: trimmingUsername }],
     });
 
-    if (findUserByEmail || findUserByUsername) {
-      return res.status(400).json({ message: "User already exists" });
+    if (findUser) {
+      return res.status(409).json({ message: "User already exists" });
     }
 
     const salt = await bcrypt.genSalt(10);
