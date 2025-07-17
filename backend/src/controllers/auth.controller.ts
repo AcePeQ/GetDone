@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import User from "../models/User.model";
+import User from "../models/user.model";
+import { generateToken } from "../utils/auth.util";
 
 export async function login(req: Request, res: Response) {
   try {
@@ -22,6 +23,8 @@ export async function login(req: Request, res: Response) {
     if (!isPasswordValid) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
+
+    generateToken(user._id, res);
 
     return res.status(200).json({
       _id: user._id,
