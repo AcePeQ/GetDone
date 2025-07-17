@@ -19,12 +19,15 @@ export function generateToken(userId: mongoose.Types.ObjectId, res: Response) {
     res.cookie("jwt", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV == "production" ? "none" : "strict",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
       maxAge: SEVEN_DAYS_IN_MILLISECONDS,
     });
 
     return token;
   } catch (error) {
-    console.error("Error in generateToken util:", error);
+    console.error(
+      "Error in during genereting token in generateToken function:",
+      error
+    );
   }
 }
