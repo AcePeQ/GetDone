@@ -6,12 +6,8 @@ interface IExtendedJWTPayload extends jwt.JwtPayload {
   userId: string;
 }
 
-export interface AuthRequest extends Request {
-  authUser: TUser;
-}
-
 export async function verifyToken(
-  req: AuthRequest,
+  req: Request,
   res: Response,
   next: NextFunction
 ) {
