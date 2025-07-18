@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import User, { TUser } from "../models/user.model";
+import User from "../models/user.model";
 
 interface IExtendedJWTPayload extends jwt.JwtPayload {
   userId: string;
@@ -25,7 +25,7 @@ export async function verifyToken(
       return res.status(401).json({ message: "Unauthorized access" });
     }
 
-    const user = await User.findById(decoded.userId);
+    const user = await User.findById(decoded.userId).select("-password");
 
     if (!user) {
       return res.status(404).json({ message: "User not found" });

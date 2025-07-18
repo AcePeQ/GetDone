@@ -11,6 +11,12 @@ const boardSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
 });
 
+boardSchema.virtual("columns", {
+  ref: "Column",
+  localField: "_id",
+  foreignField: "boardId",
+});
+
 const Board = mongoose.model<TBoard>("Board", boardSchema);
 
 export default Board;

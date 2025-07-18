@@ -15,6 +15,12 @@ const columnSchema = new mongoose.Schema({
   color: { type: String, required: true, default: "white" },
 });
 
+columnSchema.virtual("tasks", {
+  ref: "Task",
+  localField: "_id",
+  foreignField: "columnId",
+});
+
 const Column = mongoose.model<TColumn>("Column", columnSchema);
 
 export default Column;
