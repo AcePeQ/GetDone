@@ -21,6 +21,8 @@ columnSchema.virtual("tasks", {
   foreignField: "columnId",
 });
 
+columnSchema.set("toJSON", { virtuals: true });
+
 const Column = mongoose.model<TColumn>("Column", columnSchema);
 
 export default Column;

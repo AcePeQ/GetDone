@@ -17,6 +17,8 @@ boardSchema.virtual("columns", {
   foreignField: "boardId",
 });
 
+boardSchema.set("toJSON", { virtuals: true });
+
 const Board = mongoose.model<TBoard>("Board", boardSchema);
 
 export default Board;
