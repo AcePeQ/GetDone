@@ -9,8 +9,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Homepage />} />
-        <Route path="/getdone" element={<Layout />}>
-          <Route index element={<AppPage />} />
+        <Route element={<Layout />}>
+          <Route path="/getdone" element={<AppPage />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
