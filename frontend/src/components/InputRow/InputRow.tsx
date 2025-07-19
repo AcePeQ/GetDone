@@ -40,7 +40,7 @@ function InputRow({ error, id, label, children }: InputRowProps) {
             aria-label={showPassword ? "Show password" : "Hide password"}
             className={styles.passwordButton}
           >
-            {showPassword ? <EyeOff /> : <Eye />}
+            {showPassword ? <Eye /> : <EyeOff />}
           </button>
         )}
         {childrenInput}

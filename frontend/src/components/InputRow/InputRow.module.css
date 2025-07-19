@@ -1,0 +1,77 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+}
+
+.inputContainer {
+  position: relative;
+
+  input {
+    width: 100%;
+
+    border: 2px solid transparent;
+    outline: none;
+
+    color: inherit;
+
+    font-size: 2rem;
+    border-radius: 4px;
+
+    padding: 0.5rem 5rem 0.5rem 1rem;
+
+    background-color: var(--color-background-2);
+
+    box-shadow: 0 4px 8px var(--color-background-2);
+
+    transition: all 0.3s;
+  }
+
+  input:hover,
+  input:active,
+  input:focus,
+  input:focus-within,
+  input:not(:placeholder-shown) {
+    border: 2px solid var(--color-accent-violet);
+  }
+}
+
+.passwordButton {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+
+  color: inherit;
+  svg {
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+}
+
+.passwordButton:hover {
+  color: var(--color-accent-violet);
+}
+
+.error {
+  font-size: 1.8rem;
+  font-weight: 500;
+
+  padding-left: 1px;
+  margin-top: 0.25rem;
+
+  color: var(--color-red-1);
+}

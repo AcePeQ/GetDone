@@ -27,6 +27,7 @@ function LoginForm() {
           })}
           type="text"
           id="email"
+          placeholder=" "
         />
       </InputRow>
       <InputRow label="Password" id="password" error={errors.password?.message}>
@@ -36,6 +37,7 @@ function LoginForm() {
           })}
           type="password"
           id="password"
+          placeholder=" "
         />
       </InputRow>
     </form>

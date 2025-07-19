@@ -8,6 +8,10 @@
   }
 }
 
+.formContainer {
+  margin: 2rem 0 3rem;
+}
+
 .cta {
   border: none;
   background: none;
