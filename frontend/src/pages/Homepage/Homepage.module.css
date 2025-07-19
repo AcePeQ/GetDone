@@ -24,4 +24,8 @@
   justify-content: center;
 
   flex-direction: column;
+
+  img {
+    margin: 0 auto;
+  }
 }
