@@ -1,0 +1,27 @@
+.wrapper {
+  height: 100dvh;
+
+  background-image: url("../../assets/images/backgrounds/homepage-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.homepage {
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-background-1-opacity),
+    var(--color-background-1-opacity)
+  );
+
+  backdrop-filter: blur(12px);
+
+  max-width: 65rem;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
