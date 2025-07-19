@@ -1,10 +1,20 @@
-import logo from "./assets/images/logo/logo.svg";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Homepage from "./pages/Homepage/Homepage";
+import Layout from "./components/Layout/Layout";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
+import AppPage from "./pages/AppPage/AppPage";
 
 function App() {
   return (
-    <div>
-      <img src={logo} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Homepage />} />
+        <Route path="/getdone" element={<Layout />}>
+          <Route index element={<AppPage />} />
+        </Route>
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
