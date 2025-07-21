@@ -1,0 +1,17 @@
+.btn {
+  background: none;
+  outline: none;
+
+  border: 2px solid transparent;
+
+  font-size: 2.2rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+
+  border-radius: 6px;
+}
+
+.primary {
+  background-color: var(--color-accent-violet);
+  color: var(--color-text-1);
+}

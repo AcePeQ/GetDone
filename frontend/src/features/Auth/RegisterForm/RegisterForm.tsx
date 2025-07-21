@@ -1,21 +1,22 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import styles from "./LoginForm.module.css";
+import styles from "./RegisterForm.module.css";
 import InputRow from "../../../components/InputRow/InputRow";
 import Button from "../../../components/Button/Button";
 
-type LoginInputs = {
+type RegisterInputs = {
   email: string;
+  username: string;
   password: string;
 };
 
-function LoginForm() {
+function RegisterForm() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginInputs>();
+  } = useForm<RegisterInputs>();
 
-  const onSubmit: SubmitHandler<LoginInputs> = (data) => {
+  const onSubmit: SubmitHandler<RegisterInputs> = (data) => {
     console.log(data);
   };
 
@@ -31,6 +32,16 @@ function LoginForm() {
           placeholder=" "
         />
       </InputRow>
+      <InputRow label="Username" id="username" error={errors.username?.message}>
+        <input
+          {...register("email", {
+            required: "Username field is required",
+          })}
+          type="text"
+          id="username"
+          placeholder=" "
+        />
+      </InputRow>
       <InputRow label="Password" id="password" error={errors.password?.message}>
         <input
           {...register("password", {
@@ -43,10 +54,10 @@ function LoginForm() {
       </InputRow>
 
       <Button type="submit" buttonStyle="primary">
-        Login
+        Register
       </Button>
     </form>
   );
 }
 
-export default LoginForm;
+export default RegisterForm;
