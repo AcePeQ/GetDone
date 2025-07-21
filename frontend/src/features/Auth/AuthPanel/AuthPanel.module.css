@@ -1,6 +1,6 @@
 .heading {
   font-size: 4.2rem;
-  color: var(--color-accent-violet);
+  color: var(--color-accent-violet-1);
 
   p {
     color: var(--color-text-primary);
@@ -28,10 +28,11 @@
   cursor: pointer;
 
   transition: all 0.3s;
+
+  outline: none;
 }
 
 .cta:hover,
-.cta:focus,
-.cta:focus-within {
-  color: var(--color-accent-violet);
+.cta:focus-visible {
+  color: var(--color-accent-violet-1);
 }

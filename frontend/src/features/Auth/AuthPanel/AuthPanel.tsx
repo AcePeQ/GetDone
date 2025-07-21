@@ -15,13 +15,13 @@ function AuthPanel() {
       <h1 className={styles.heading}>
         {isLoginPanel && (
           <>
-            Welcome, <p>Sign into your account!</p>
+            Welcome <p>Sign into your account!</p>
           </>
         )}
 
         {!isLoginPanel && (
           <>
-            New to GetDone, <p>Create your account!</p>
+            New to GetDone <p>Create your account!</p>
           </>
         )}
       </h1>

@@ -1,6 +1,7 @@
 .btn {
   background: none;
   outline: none;
+  cursor: pointer;
 
   border: 2px solid transparent;
 
@@ -9,9 +10,16 @@
   font-weight: 500;
 
   border-radius: 6px;
+
+  transition: all 0.3s;
 }
 
 .primary {
-  background-color: var(--color-accent-violet);
+  background-color: var(--color-accent-violet-1);
   color: var(--color-text-1);
+}
+
+.primary:hover,
+.primary:focus-visible {
+  background-color: var(--color-accent-violet-3);
 }

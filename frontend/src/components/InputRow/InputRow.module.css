@@ -38,7 +38,7 @@
   input:focus,
   input:focus-within,
   input:not(:placeholder-shown) {
-    border: 2px solid var(--color-accent-violet);
+    border: 2px solid var(--color-accent-violet-1);
   }
 }
 
@@ -56,14 +56,18 @@
   transition: all 0.3s;
 
   color: inherit;
+
+  outline: none;
+
   svg {
     width: 2.8rem;
     height: 2.8rem;
   }
 }
 
-.passwordButton:hover {
-  color: var(--color-accent-violet);
+.passwordButton:hover,
+.passwordButton:focus-visible {
+  color: var(--color-accent-violet-1);
 }
 
 .error {
