@@ -3,6 +3,8 @@ import LoginForm from "../LoginForm/LoginForm";
 import styles from "./AuthPanel.module.css";
 import RegisterForm from "../RegisterForm/RegisterForm";
 
+import { AnimatePresence, motion } from "motion/react";
+
 function AuthPanel() {
   const [isLoginPanel, setIsLoginPanel] = useState(true);
 
@@ -11,31 +13,39 @@ function AuthPanel() {
   }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.heading}>
-        {isLoginPanel && (
-          <>
-            Welcome <p>Sign into your account!</p>
-          </>
-        )}
+    <AnimatePresence>
+      <motion.div
+        key={isLoginPanel ? 1 : 0}
+        initial={{ opacity: 0, y: 125 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        className={styles.container}
+      >
+        <h1 className={styles.heading}>
+          {isLoginPanel && (
+            <>
+              Welcome <p>Sign into your account!</p>
+            </>
+          )}
 
-        {!isLoginPanel && (
-          <>
-            New to GetDone <p>Create your account!</p>
-          </>
-        )}
-      </h1>
+          {!isLoginPanel && (
+            <>
+              New to GetDone <p>Create your account!</p>
+            </>
+          )}
+        </h1>
 
-      <div className={styles.formContainer}>
-        {isLoginPanel ? <LoginForm /> : <RegisterForm />}
-      </div>
+        <div className={styles.formContainer}>
+          {isLoginPanel ? <LoginForm /> : <RegisterForm />}
+        </div>
 
-      <button onClick={togglePanels} className={styles.cta}>
-        {isLoginPanel
-          ? "New to GetDone? Create account!"
-          : "Already have account? Sign into your account"}
-      </button>
-    </div>
+        <button onClick={togglePanels} className={styles.cta}>
+          {isLoginPanel
+            ? "New to GetDone? Create account!"
+            : "Already have account? Sign into your account"}
+        </button>
+      </motion.div>
+    </AnimatePresence>
   );
 }
 

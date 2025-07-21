@@ -37,8 +37,8 @@ body {
   font-weight: 400;
   line-height: 1.5;
 
-  color: white;
-  background-color: black;
+  color: var(--color-text-primary);
+  background-color: var(--color-background-1);
 
   -webkit-font-smoothing: antialiased;
 }
