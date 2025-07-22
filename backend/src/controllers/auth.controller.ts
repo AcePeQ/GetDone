@@ -47,12 +47,36 @@ export async function register(req: Request, res: Response) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!email.test(emailRegex)) {
+      return res
+        .status(400)
+        .json({ message: "Invalid email format: example@gmail.com" });
+    }
+
+    const usernameRegex = /^[a-zA-Z0-9._%+-@]+$/;
+
+    if (!username.test(usernameRegex)) {
+      return res.status(400).json({ message: "Invalid username format" });
+    }
+
     const findUser = await User.findOne({
       $or: [{ email: trimmingEmail }, { username: trimmingUsername }],
     });
 
     if (findUser) {
       return res.status(409).json({ message: "User already exists" });
+    }
+
+    const passwordRegex =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=[\]{};:'"\\|,.<>?~`]).{8,}$/;
+
+    if (!password.test(passwordRegex)) {
+      return res.status(400).json({
+        message:
+          "Password must be at least 8 characters long and include at least one letter, one number, and one special character",
+      });
     }
 
     const salt = await bcrypt.genSalt(10);

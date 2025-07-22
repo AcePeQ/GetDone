@@ -26,6 +26,7 @@ function LoginForm() {
     loginToAccount(data, {
       onSuccess: (data) => {
         login(data);
+        sessionStorage.setItem("user", data);
       },
       onError: (error) => {
         toast.error(error.message);
@@ -41,7 +42,7 @@ function LoginForm() {
           {...register("email", {
             required: "Email field is required",
             pattern: {
-              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/g,
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
               message: "Invalid email format: example@gmail.com",
             },
           })}
@@ -57,7 +58,7 @@ function LoginForm() {
             required: "Password field is required",
             pattern: {
               value:
-                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=[\]{};:'"\\|,.<>?~`]).{8,}$/g,
+                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=[\]{};:'"\\|,.<>?~`]).{8,}$/,
               message:
                 "Password must be at least 8 characters long and include at least one letter, one number, and one special character",
             },
