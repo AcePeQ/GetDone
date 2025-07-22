@@ -28,4 +28,12 @@
   flex-direction: column;
 
   border-radius: 0 8px 8px 0;
+
+  position: relative;
+}
+
+.homepage ~ image {
+  position: absolute;
+  top: 0;
+  left: 0;
 }

@@ -36,6 +36,7 @@ function InputRow({ error, id, label, children }: InputRowProps) {
       <div className={styles.inputContainer}>
         {id === "password" && (
           <button
+            type="button"
             onClick={togglePasswordVisibility}
             aria-label={showPassword ? "Show password" : "Hide password"}
             className={styles.passwordButton}
