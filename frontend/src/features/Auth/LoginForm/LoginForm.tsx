@@ -5,6 +5,7 @@ import Button from "../../../components/Button/Button";
 import { useLogin } from "../useLogin";
 import { toast } from "react-toastify";
 import { useUserStore } from "../../../stores/useUserStore";
+import { useNavigate } from "react-router-dom";
 
 type LoginInputs = {
   email: string;
@@ -12,6 +13,7 @@ type LoginInputs = {
 };
 
 function LoginForm() {
+  const navigate = useNavigate();
   const { loginToAccount, isPending } = useLogin();
   const { login } = useUserStore();
 
@@ -27,6 +29,7 @@ function LoginForm() {
       onSuccess: (data) => {
         login(data);
         sessionStorage.setItem("user", data);
+        navigate("/getdone", { replace: true });
       },
       onError: (error) => {
         toast.error(error.message);
