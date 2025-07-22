@@ -3,18 +3,32 @@ import Homepage from "./pages/Homepage/Homepage";
 import Layout from "./components/Layout/Layout";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import AppPage from "./pages/AppPage/AppPage";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ToastContainer, Zoom } from "react-toastify";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Homepage />} />
-        <Route element={<Layout />}>
-          <Route path="/getdone" element={<AppPage />} />
-        </Route>
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<Homepage />} />
+          <Route element={<Layout />}>
+            <Route path="/getdone" element={<AppPage />} />
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        pauseOnFocusLoss={false}
+        theme="dark"
+        transition={Zoom}
+        style={{ zIndex: "100000" }}
+      />
+    </QueryClientProvider>
   );
 }
 

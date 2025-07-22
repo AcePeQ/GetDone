@@ -2,6 +2,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import styles from "./RegisterForm.module.css";
 import InputRow from "../../../components/InputRow/InputRow";
 import Button from "../../../components/Button/Button";
+import { useRegister } from "../useRegister";
 
 type RegisterInputs = {
   email: string;
@@ -10,6 +11,7 @@ type RegisterInputs = {
 };
 
 function RegisterForm() {
+  const { isPending, registerAccount } = useRegister();
   const {
     register,
     handleSubmit,
@@ -17,7 +19,7 @@ function RegisterForm() {
   } = useForm<RegisterInputs>();
 
   const onSubmit: SubmitHandler<RegisterInputs> = (data) => {
-    console.log(data);
+    registerAccount(data);
   };
 
   return (
@@ -30,6 +32,7 @@ function RegisterForm() {
           type="text"
           id="email"
           placeholder=" "
+          disabled={isPending}
         />
       </InputRow>
       <InputRow label="Username" id="username" error={errors.username?.message}>
@@ -40,6 +43,7 @@ function RegisterForm() {
           type="text"
           id="username"
           placeholder=" "
+          disabled={isPending}
         />
       </InputRow>
       <InputRow label="Password" id="password" error={errors.password?.message}>
@@ -50,10 +54,11 @@ function RegisterForm() {
           type="password"
           id="password"
           placeholder=" "
+          disabled={isPending}
         />
       </InputRow>
 
-      <Button type="submit" buttonStyle="primary">
+      <Button isDisabled={isPending} type="submit" buttonStyle="primary">
         Register
       </Button>
     </form>

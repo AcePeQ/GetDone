@@ -2,6 +2,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import styles from "./LoginForm.module.css";
 import InputRow from "../../../components/InputRow/InputRow";
 import Button from "../../../components/Button/Button";
+import { useLogin } from "../useLogin";
 
 type LoginInputs = {
   email: string;
@@ -9,6 +10,8 @@ type LoginInputs = {
 };
 
 function LoginForm() {
+  const { loginToAccount, isPending } = useLogin();
+
   const {
     register,
     handleSubmit,
@@ -16,7 +19,7 @@ function LoginForm() {
   } = useForm<LoginInputs>();
 
   const onSubmit: SubmitHandler<LoginInputs> = (data) => {
-    console.log(data);
+    loginToAccount(data);
   };
 
   return (
@@ -29,6 +32,7 @@ function LoginForm() {
           type="text"
           id="email"
           placeholder=" "
+          disabled={isPending}
         />
       </InputRow>
       <InputRow label="Password" id="password" error={errors.password?.message}>
@@ -39,10 +43,11 @@ function LoginForm() {
           type="password"
           id="password"
           placeholder=" "
+          disabled={isPending}
         />
       </InputRow>
 
-      <Button type="submit" buttonStyle="primary">
+      <Button isDisabled={isPending} type="submit" buttonStyle="primary">
         Login
       </Button>
     </form>
