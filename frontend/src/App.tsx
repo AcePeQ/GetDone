@@ -25,8 +25,11 @@ function App() {
         autoClose={3000}
         pauseOnFocusLoss={false}
         theme="dark"
+        limit={2}
         transition={Zoom}
-        style={{ zIndex: "100000" }}
+        style={{
+          zIndex: "100000",
+        }}
       />
     </QueryClientProvider>
   );

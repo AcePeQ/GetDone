@@ -6,7 +6,7 @@ function Homepage() {
   return (
     <div className={styles.wrapper}>
       <section className={styles.homepage}>
-        <div>
+        <div className={styles.container}>
           <Logo size="big" />
           <AuthPanel />
         </div>
