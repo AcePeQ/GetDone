@@ -3,6 +3,7 @@ import styles from "./RegisterForm.module.css";
 import InputRow from "../../../components/InputRow/InputRow";
 import Button from "../../../components/Button/Button";
 import { useRegister } from "../useRegister";
+import { toast } from "react-toastify";
 
 type RegisterInputs = {
   email: string;
@@ -10,16 +11,30 @@ type RegisterInputs = {
   password: string;
 };
 
-function RegisterForm() {
+function RegisterForm({
+  onChangeToLoginPanel,
+}: {
+  onChangeToLoginPanel: () => void;
+}) {
   const { isPending, registerAccount } = useRegister();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<RegisterInputs>();
 
   const onSubmit: SubmitHandler<RegisterInputs> = (data) => {
-    registerAccount(data);
+    registerAccount(data, {
+      onSuccess: (data) => {
+        toast.success(data.message);
+        onChangeToLoginPanel();
+      },
+      onError: (error) => {
+        toast.error(error.message);
+        reset();
+      },
+    });
   };
 
   return (

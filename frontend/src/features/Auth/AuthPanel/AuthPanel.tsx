@@ -12,6 +12,10 @@ function AuthPanel() {
     setIsLoginPanel((prev) => (prev === true ? false : true));
   }
 
+  function handleChangeToLoginPanel() {
+    setIsLoginPanel(true);
+  }
+
   return (
     <AnimatePresence>
       <motion.div
@@ -36,7 +40,11 @@ function AuthPanel() {
         </h1>
 
         <div className={styles.formContainer}>
-          {isLoginPanel ? <LoginForm /> : <RegisterForm />}
+          {isLoginPanel ? (
+            <LoginForm />
+          ) : (
+            <RegisterForm onChangeToLoginPanel={handleChangeToLoginPanel} />
+          )}
         </div>
 
         <button onClick={togglePanels} className={styles.cta}>

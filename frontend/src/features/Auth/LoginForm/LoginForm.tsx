@@ -3,6 +3,8 @@ import styles from "./LoginForm.module.css";
 import InputRow from "../../../components/InputRow/InputRow";
 import Button from "../../../components/Button/Button";
 import { useLogin } from "../useLogin";
+import { toast } from "react-toastify";
+import { useUserStore } from "../../../stores/useUserStore";
 
 type LoginInputs = {
   email: string;
@@ -11,15 +13,25 @@ type LoginInputs = {
 
 function LoginForm() {
   const { loginToAccount, isPending } = useLogin();
+  const { login } = useUserStore();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<LoginInputs>();
 
   const onSubmit: SubmitHandler<LoginInputs> = (data) => {
-    loginToAccount(data);
+    loginToAccount(data, {
+      onSuccess: (data) => {
+        login(data);
+      },
+      onError: (error) => {
+        toast.error(error.message);
+        reset();
+      },
+    });
   };
 
   return (

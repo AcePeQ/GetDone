@@ -65,7 +65,9 @@ export async function register(req: Request, res: Response) {
     });
     await newUser.save();
 
-    return res.status(201).json({ message: "User registered successfully" });
+    return res
+      .status(201)
+      .json({ message: "User accuont created successfully" });
   } catch (error) {
     console.error("Error in register controller:", error);
     res.status(500).json({ message: "Internal server error" });
