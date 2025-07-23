@@ -4,4 +4,33 @@
   padding: 1.5rem;
 
   border-bottom: 2px solid var(--color-text-secondary);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 2rem;
+}
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 1.7rem;
+    font-weight: 500;
+  }
+
+  h2 {
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+}
+
+.options {
+  display: flex;
+
+  gap: 2rem;
 }

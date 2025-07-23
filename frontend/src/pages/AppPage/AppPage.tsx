@@ -1,5 +1,7 @@
+import Board from "../../features/Boards/Board/Board";
+
 function AppPage() {
-  return <div>App</div>;
+  return <Board />;
 }
 
 export default AppPage;

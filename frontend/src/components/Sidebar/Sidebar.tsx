@@ -7,9 +7,8 @@ function Sidebar() {
     <aside className={styles.aside}>
       <div className={styles.logoWrapper}>
         <Logo size="medium" />
-
-        <Boards />
       </div>
+      <Boards />
     </aside>
   );
 }

@@ -12,6 +12,12 @@
   border-radius: 6px;
 
   transition: all 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
 }
 
 .primary {
@@ -22,4 +28,15 @@
 .primary:hover,
 .primary:focus-visible {
   background-color: var(--color-accent-violet-3);
+}
+
+.secondary {
+  background-color: var(--color-background-1);
+  color: var(--text-color-primary);
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  background-color: var(--color-background-3);
+  color: var(--text-color-primary);
 }
