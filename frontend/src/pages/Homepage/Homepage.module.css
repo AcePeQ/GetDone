@@ -27,18 +27,23 @@
 
   flex-direction: column;
 
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 6px 6px 0;
+
+  border-right: 2px solid var(--color-background-4);
 
   position: relative;
-}
-
-.homepage ~ image {
-  position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .container {
   max-width: 45rem;
   width: 100%;
+}
+
+.container img {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  transform: translateX(-50%);
 }
