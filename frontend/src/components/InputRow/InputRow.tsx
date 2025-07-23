@@ -34,6 +34,7 @@ function InputRow({ error, id, label, children }: InputRowProps) {
         {label}
       </label>
       <div className={styles.inputContainer}>
+        {childrenInput}
         {id === "password" && (
           <button
             type="button"
@@ -44,7 +45,6 @@ function InputRow({ error, id, label, children }: InputRowProps) {
             {showPassword ? <Eye /> : <EyeOff />}
           </button>
         )}
-        {childrenInput}
       </div>
       {error && <p className={styles.error}>{error}</p>}
     </div>

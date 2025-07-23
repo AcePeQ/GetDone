@@ -1,0 +1,7 @@
+.header {
+  background-color: var(--color-background-2);
+
+  padding: 1.5rem;
+
+  border-bottom: 2px solid var(--color-text-secondary);
+}
