@@ -42,6 +42,8 @@ body {
   background-color: var(--color-background-1);
 
   -webkit-font-smoothing: antialiased;
+
+  overflow: hidden;
 }
 
 img,
@@ -112,4 +114,28 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent-violet-1);
+
+  transition: all 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-violet-3);
+}
+
+::selection {
+  background-color: var(--color-accent-violet-1);
+  color: var(--color-text-primary);
 }

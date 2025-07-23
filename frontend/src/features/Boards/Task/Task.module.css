@@ -1,0 +1,37 @@
+.task_item {
+  display: flex;
+}
+
+.task_button {
+  width: 100%;
+
+  border: none;
+  outline: none;
+  background: none;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.25rem;
+
+  align-items: flex-start;
+
+  cursor: pointer;
+
+  padding: 2rem;
+  border-radius: 9px;
+
+  background-color: var(--color-background-2);
+  color: var(--color-text-primary);
+
+  span {
+    display: inline-block;
+    text-align: left;
+  }
+
+  .tasksCount {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+  }
+}
