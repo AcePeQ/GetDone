@@ -6,6 +6,7 @@ type ButtonProps = {
   buttonStyle?: string;
   type?: "button" | "submit" | "reset";
   isDisabled?: boolean;
+  onClick?: () => void;
 };
 
 function Button({
@@ -13,12 +14,14 @@ function Button({
   buttonStyle = "primary",
   type = "button",
   isDisabled,
+  onClick,
 }: ButtonProps) {
   return (
     <button
       className={`${styles.btn} ${styles[buttonStyle]}`}
       type={type}
       disabled={isDisabled}
+      onClick={onClick}
     >
       {children}
     </button>
