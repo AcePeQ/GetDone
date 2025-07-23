@@ -140,3 +140,14 @@ h6 {
   background-color: var(--color-accent-violet-1);
   color: var(--color-text-primary);
 }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: rect(0, 0, 0, 0);
+  border: 0;
+}

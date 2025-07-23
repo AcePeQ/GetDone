@@ -4,7 +4,10 @@ import Button from "../Button/Button";
 function ButtonLogout() {
   return (
     <Button type="button" buttonStyle="primary">
-      <LogOut />
+      <>
+        <p className="sr-only">logout button</p>
+        <LogOut aria-disabled />
+      </>
     </Button>
   );
 }
