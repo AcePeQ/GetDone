@@ -1,7 +1,8 @@
-import { LogOut, Plus } from "lucide-react";
 import { useUserStore } from "../../stores/useUserStore";
-import Button from "../Button/Button";
+
 import styles from "./Header.module.css";
+import ButtonLogout from "../ButtonLogout/ButtonLogout";
+import AddTaskButton from "../../features/Tasks/AddTaskButton/AddTaskButton";
 
 function Header() {
   const username = useUserStore((state) => state.user?.username);
@@ -14,15 +15,8 @@ function Header() {
       </div>
 
       <div className={styles.options}>
-        <Button type="button" buttonStyle="secondary">
-          <>
-            <Plus /> Add new task
-          </>
-        </Button>
-
-        <Button type="button" buttonStyle="primary">
-          <LogOut />
-        </Button>
+        <AddTaskButton />
+        <ButtonLogout />
       </div>
     </header>
   );

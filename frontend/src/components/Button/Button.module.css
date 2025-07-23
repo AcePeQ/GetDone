@@ -22,21 +22,20 @@
 
 .primary {
   background-color: var(--color-accent-violet-1);
-  color: var(--color-text-1);
+  color: var(--color-text-primary);
 }
 
 .primary:hover,
 .primary:focus-visible {
-  background-color: var(--color-accent-violet-3);
+  background-color: var(--color-accent-violet-2);
 }
 
 .secondary {
-  background-color: var(--color-background-1);
+  background-color: var(--color-background-2);
   color: var(--text-color-primary);
 }
 
 .secondary:hover,
 .secondary:focus-visible {
-  background-color: var(--color-background-3);
-  color: var(--text-color-primary);
+  background-color: var(--color-background-4);
 }

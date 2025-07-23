@@ -1,7 +1,7 @@
 .aside {
   background-color: var(--color-background-2);
 
-  border-right: 2px solid var(--color-text-secondary);
+  border-right: 2px solid var(--color-background-4);
 
   padding-right: 4rem;
 
