@@ -49,7 +49,7 @@ export async function register(req: Request, res: Response) {
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    if (!email.test(emailRegex)) {
+    if (!email.match(emailRegex)) {
       return res
         .status(400)
         .json({ message: "Invalid email format: example@gmail.com" });
@@ -57,7 +57,7 @@ export async function register(req: Request, res: Response) {
 
     const usernameRegex = /^[a-zA-Z0-9._%+-@]+$/;
 
-    if (!username.test(usernameRegex)) {
+    if (!username.match(usernameRegex)) {
       return res.status(400).json({ message: "Invalid username format" });
     }
 
@@ -72,7 +72,7 @@ export async function register(req: Request, res: Response) {
     const passwordRegex =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=[\]{};:'"\\|,.<>?~`]).{8,}$/;
 
-    if (!password.test(passwordRegex)) {
+    if (!password.match(passwordRegex)) {
       return res.status(400).json({
         message:
           "Password must be at least 8 characters long and include at least one letter, one number, and one special character",

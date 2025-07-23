@@ -28,7 +28,7 @@ function LoginForm() {
     loginToAccount(data, {
       onSuccess: (data) => {
         login(data);
-        sessionStorage.setItem("user", data);
+        sessionStorage.setItem("user", JSON.stringify(data));
         navigate("/getdone", { replace: true });
       },
       onError: (error) => {
