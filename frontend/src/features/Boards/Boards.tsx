@@ -1,5 +1,6 @@
-import { Plus, TablePropertiesIcon } from "lucide-react";
+import { TablePropertiesIcon } from "lucide-react";
 import styles from "./Boards.module.css";
+import ButtonCreateNewBoard from "../../components/ButtonCreateNewBoard/ButtonCreateNewBoard";
 
 function Boards() {
   return (
@@ -22,10 +23,7 @@ function Boards() {
         </li>
 
         <li>
-          <button className={styles.buttonAdd}>
-            <Plus className={styles.icon} />
-            Create new board
-          </button>
+          <ButtonCreateNewBoard />
         </li>
       </ul>
     </div>

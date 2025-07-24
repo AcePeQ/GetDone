@@ -11,8 +11,6 @@ function ButtonLogout() {
   const { logout, isPending } = useLogout();
 
   function handleClick() {
-    console.log("Elo");
-
     logout(undefined, {
       onSuccess: () => {
         sessionStorage.removeItem("user");

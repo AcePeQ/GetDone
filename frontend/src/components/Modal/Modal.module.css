@@ -1,0 +1,64 @@
+.modal {
+  margin: auto;
+
+  min-width: 30rem;
+  padding: 0;
+  z-index: 2;
+  background: var(--color-background-1);
+  color: inherit;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+
+  border: 0;
+}
+
+.modal::backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100dvh;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.modalContainer {
+  padding: 2rem;
+
+  position: relative;
+  z-index: 3;
+
+  h1 {
+    font-size: 2.8rem;
+
+    padding-right: 3rem;
+
+    margin-bottom: 1.25rem;
+  }
+}
+
+.btnClose {
+  background: none;
+  border: none;
+
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  color: var(--color-text-primary);
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+
+  svg {
+    width: 3.2rem;
+    height: 3.2rem;
+  }
+}
+
+.btnClose:hover,
+.btnClose:focus-visible {
+  color: var(--color-text-secondary);
+}
