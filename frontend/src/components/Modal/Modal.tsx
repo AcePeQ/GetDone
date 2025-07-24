@@ -12,12 +12,21 @@ type TModalProps = {
 
 function Modal({ title, isOpen, onClose, children }: TModalProps) {
   const dialog = useRef<HTMLDialogElement | null>(null);
+  const onCloseRef = useRef(onClose);
 
   useEffect(() => {
+    function handleClickBackdrop(e: MouseEvent) {
+      if (e.target === e.currentTarget) {
+        onCloseRef.current();
+      }
+    }
+
     if (isOpen) {
       dialog.current?.showModal();
+      dialog.current?.addEventListener("click", handleClickBackdrop);
     } else {
       dialog.current?.close();
+      dialog.current?.removeEventListener("click", handleClickBackdrop);
     }
   }, [isOpen]);
 
