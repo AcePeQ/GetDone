@@ -2,6 +2,14 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import User from "../models/user.model";
 
+declare global {
+  namespace Express {
+    interface Request {
+      authUser?: typeof User.prototype;
+    }
+  }
+}
+
 interface IExtendedJWTPayload extends jwt.JwtPayload {
   userId: string;
 }
