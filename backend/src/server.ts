@@ -4,6 +4,10 @@ import connectDatabase from "./configs/db.config";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
+import "./models/board.model";
+import "./models/column.model";
+import "./models/task.model";
+
 import authRouter from "./routes/auth.route";
 import boardRouter from "./routes/board.route";
 

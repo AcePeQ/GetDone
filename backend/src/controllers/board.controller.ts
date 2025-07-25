@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import Board from "../models/board.model";
+import Column from "../models/column.model";
+import Task from "../models/task.model";
 
 export async function userBoards(req: Request, res: Response) {
   try {
@@ -15,7 +17,7 @@ export async function userBoards(req: Request, res: Response) {
     res.status(200).json(userBoards);
   } catch (error) {
     console.error("Error in userBoards controller: ", error);
-    res.status(500).json({ message: "Interial server error" });
+    res.status(500).json({ message: "Internal server error" });
   }
 }
 
@@ -51,6 +53,6 @@ export async function createUserBoard(req: Request, res: Response) {
       .json({ message: `${trimmedName} board sucessfully created` });
   } catch (error) {
     console.error("Error in creating user board controller: ", error);
-    res.status(500).json({ message: "Interial server error" });
+    res.status(500).json({ message: "Internal server error" });
   }
 }

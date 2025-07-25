@@ -25,3 +25,27 @@ export async function createBoardApi(createBoardData: TCreateBoardData) {
     throw error;
   }
 }
+
+export async function getBoardsApi() {
+  try {
+    const res = await fetch(`${API_URL}/api/board/boards`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      method: "GET",
+    });
+
+    if (!res.ok) {
+      const error = await res.json();
+      throw new Error(error.message);
+    }
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
