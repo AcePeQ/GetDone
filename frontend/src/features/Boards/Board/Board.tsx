@@ -1,5 +1,6 @@
 import ButtonCreate from "../../../components/ButtonCreate/ButtonCreate";
 import { useBoardsStore } from "../../../stores/useBoardsStore";
+import AddColumnForm from "../../Columns/AddColumnForm/AddColumnForm";
 import BoardColumn from "../BoardColumn/BoardColumn";
 import styles from "./Board.module.css";
 
@@ -18,7 +19,7 @@ function Board() {
         buttonTitle="Add new column"
         buttonStyle="buttonNewColumn"
       >
-        <div></div>
+        <AddColumnForm />
       </ButtonCreate>
     </div>
   );
