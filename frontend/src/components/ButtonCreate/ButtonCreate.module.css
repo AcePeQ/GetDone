@@ -24,8 +24,8 @@
   color: var(--color-accent-violet-3);
 }
 
-.buttonNewBoard :hover,
-.buttonNewBoard :focus-visible {
+.buttonNewBoard:hover,
+.buttonNewBoard:focus-visible {
   background-color: var(--color-accent-violet-1);
   color: var(--color-text-primary);
 }

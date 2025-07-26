@@ -11,7 +11,7 @@ type TAddNewBoardInputs = {
 };
 
 type TBoardFormProps = {
-  onClose: () => void;
+  onClose?: () => void;
 };
 
 function AddBoardForm({ onClose }: TBoardFormProps) {
@@ -28,7 +28,7 @@ function AddBoardForm({ onClose }: TBoardFormProps) {
     createBoard(data, {
       onSuccess: (data) => {
         toast.success(data.message);
-        onClose();
+        onClose?.();
       },
       onError: (error) => {
         toast.error(error.message);

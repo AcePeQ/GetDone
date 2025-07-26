@@ -9,7 +9,7 @@ type TButtonCreateProps = {
   modalTitle: string;
   buttonTitle: string;
   buttonStyle: string;
-  children: ReactElement<{ onClose: () => void }>;
+  children: ReactElement;
 };
 
 function ButtonCreate({
@@ -22,9 +22,12 @@ function ButtonCreate({
 
   const buttonCSS = buttonStyle;
 
-  const childrenWithOnClose = cloneElement(children, {
-    onClose: handleCloseModal,
-  });
+  const childrenWithOnClose = cloneElement(
+    children as ReactElement<{ onClose: () => void }>,
+    {
+      onClose: handleCloseModal,
+    }
+  );
 
   return (
     <>

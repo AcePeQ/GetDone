@@ -1,7 +1,8 @@
 import { TablePropertiesIcon } from "lucide-react";
 import styles from "./Boards.module.css";
-import ButtonCreateNewBoard from "../../components/ButtonCreateNewBoard/ButtonCreateNewBoard";
 import { useGetBoards } from "./useGetBoards";
+import ButtonCreate from "../../components/ButtonCreate/ButtonCreate";
+import AddBoardForm from "./AddBoardForm/AddBoardForm";
 
 function Boards() {
   const { isError, isPending, error, userBoards } = useGetBoards();
@@ -36,7 +37,13 @@ function Boards() {
         </li>
 
         <li>
-          <ButtonCreateNewBoard />
+          <ButtonCreate
+            modalTitle="Add New Board"
+            buttonTitle="Create new board"
+            buttonStyle="buttonNewBoard"
+          >
+            <AddBoardForm />
+          </ButtonCreate>
         </li>
       </ul>
     </div>

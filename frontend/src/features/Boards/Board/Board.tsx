@@ -1,4 +1,4 @@
-import ButtonCreateNewColumn from "../../../components/ButtonCreateNewColumn/ButtonCreateNewColumn";
+import ButtonCreate from "../../../components/ButtonCreate/ButtonCreate";
 import BoardColumn from "../BoardColumn/BoardColumn";
 import styles from "./Board.module.css";
 
@@ -7,7 +7,13 @@ function Board() {
     <div className={styles.board}>
       <BoardColumn />
 
-      <ButtonCreateNewColumn />
+      <ButtonCreate
+        modalTitle="Add New Column"
+        buttonTitle="Add new column"
+        buttonStyle="buttonNewColumn"
+      >
+        <div></div>
+      </ButtonCreate>
     </div>
   );
 }
