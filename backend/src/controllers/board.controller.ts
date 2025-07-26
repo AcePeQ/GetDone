@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
 import Board from "../models/board.model";
-import Column from "../models/column.model";
-import Task from "../models/task.model";
 
 export async function userBoards(req: Request, res: Response) {
   try {

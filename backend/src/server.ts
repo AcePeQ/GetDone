@@ -10,6 +10,7 @@ import "./models/task.model";
 
 import authRouter from "./routes/auth.route";
 import boardRouter from "./routes/board.route";
+import columnRouter from "./routes/column.route";
 
 env.config();
 const PORT = process.env.PORT;
@@ -22,6 +23,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRouter);
 app.use("/api/board", boardRouter);
+app.use("/api/column", columnRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
