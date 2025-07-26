@@ -2,18 +2,10 @@ import { Plus } from "lucide-react";
 import styles from "./ButtonCreateNewBoard.module.css";
 import Modal from "../Modal/Modal";
 import AddBoardForm from "../../features/Boards/AddBoardForm/AddBoardForm";
-import { useState } from "react";
+import useModal from "../../hooks/useModal/useModal";
 
 function ButtonCreateNewBoard() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  function handleCloseModal() {
-    setIsModalOpen(false);
-  }
-
-  function handleOpenModal() {
-    setIsModalOpen(true);
-  }
+  const { isModalOpen, handleCloseModal, handleOpenModal } = useModal();
 
   return (
     <>
