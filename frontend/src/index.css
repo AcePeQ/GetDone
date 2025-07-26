@@ -151,3 +151,135 @@ h6 {
   clip-path: rect(0, 0, 0, 0);
   border: 0;
 }
+
+.react-select-container {
+  position: relative;
+  width: 100%;
+
+  cursor: pointer !important;
+}
+
+.react-select__control {
+  border: 2px solid transparent !important;
+  border-radius: 4px !important;
+  background-color: var(--color-background-2) !important;
+  box-shadow: 0 4px 8px var(--color-background-2) !important;
+  font-size: 2rem !important;
+  color: inherit;
+  cursor: pointer !important;
+  transition: all 0.3s !important;
+}
+
+.react-select__control:hover,
+.react-select__control--is-focused {
+  border: 2px solid var(--color-accent-violet-1) !important;
+  box-shadow: 0 4px 8px var(--color-background-2) !important;
+}
+
+.has-value .react-select__control {
+  border: 2px solid var(--color-accent-violet-1) !important;
+}
+
+/* Focus ma priorytet nad has-value */
+.has-value .react-select__control--is-focused {
+  border: 2px solid var(--color-accent-violet-1) !important;
+}
+
+.react-select__input-container,
+.css-hlgwow {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  padding-inline: 1rem !important;
+}
+
+.react-select__input input {
+  font-size: 2rem !important;
+  color: inherit !important;
+}
+
+.react-select__placeholder {
+  font-size: 2rem !important;
+  color: red !important;
+}
+
+.react-select__single-value {
+  font-size: 2rem !important;
+  color: inherit !important;
+}
+
+.react-select__menu {
+  background-color: var(--color-background-2) !important;
+  border: 2px solid var(--color-background-2) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 8px var(--color-background-2) !important;
+  z-index: 9999 !important;
+}
+
+.react-select__menu-list {
+  padding: 0 !important;
+  max-height: 200px !important;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.35rem;
+}
+
+.react-select__option {
+  font-size: 2rem !important;
+  color: inherit !important;
+  cursor: pointer !important;
+  padding: 1rem !important;
+  transition: all 0.3s !important;
+  background-color: transparent !important;
+
+  border-radius: 4px !important;
+}
+
+.react-select__option:hover,
+.react-select__option--is-focused {
+  background-color: var(--color-accent-violet-2) !important;
+}
+
+.react-select__option--is-selected {
+  background-color: var(--color-accent-violet-1) !important;
+  color: white !important;
+}
+
+.react-select__option--is-selected:hover {
+  background-color: var(--color-accent-violet-1) !important;
+}
+
+.react-select__indicators {
+  padding-right: 1rem !important;
+}
+
+.react-select__dropdown-indicator {
+  color: var(--color-accent-violet-1) !important;
+  padding: 0.8rem !important;
+  transition: all 0.3s !important;
+}
+
+.react-select__dropdown-indicator:hover {
+  color: var(--color-accent-violet-1) !important;
+}
+
+.react-select__control--menu-is-open .react-select__dropdown-indicator {
+  transform: rotate(180deg) !important;
+}
+
+.react-select__clear-indicator {
+  color: inherit !important;
+  padding: 0.8rem !important;
+  transition: all 0.3s !important;
+}
+
+.react-select__clear-indicator:hover {
+  color: var(--color-red-1, #ff0000) !important;
+}
+
+.react-select__indicator-separator {
+  background-color: var(--color-accent-violet-1) !important;
+  width: 2px !important;
+}

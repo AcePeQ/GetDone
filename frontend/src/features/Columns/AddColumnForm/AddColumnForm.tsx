@@ -28,9 +28,15 @@ function AddColumnForm({ onClose }: TAddColumnProps) {
     control,
     reset,
     formState: { errors },
-  } = useForm<TAddColumnInputs>();
+  } = useForm<TAddColumnInputs>({
+    defaultValues: {
+      priority: 1,
+    },
+  });
 
-  const onSubmit: SubmitHandler<TAddColumnInputs> = (data) => {};
+  const onSubmit: SubmitHandler<TAddColumnInputs> = (data) => {
+    console.log(data);
+  };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -53,19 +59,22 @@ function AddColumnForm({ onClose }: TAddColumnProps) {
           render={({ field }) => (
             <Select
               {...field}
+              classNamePrefix="react-select"
+              inputId="priority"
               isClearable={false}
               isMulti={false}
               isSearchable={false}
               options={priorityOptions}
-              defaultValue={priorityOptions[1]}
               placeholder=" "
               value={priorityOptions.find(
                 (option) => option.value === field.value
               )}
+              className={`react-select-container ${
+                field.value ? "has-value" : ""
+              }`}
               onChange={(selectedOption) =>
                 field.onChange(selectedOption?.value)
               }
-              id="priority"
             />
           )}
         />
