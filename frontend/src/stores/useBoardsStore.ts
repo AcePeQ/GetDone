@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
 export type TBoard = {
-  id: string;
+  _id: string;
   name: string;
-  user: string;
+  userId: string;
   columns: TColumn[] | [];
 };
 
@@ -36,6 +36,7 @@ type BoardsState = {
   selectedBoard: TBoard | null;
 
   setBoards: (boards: TBoard[]) => void;
+  setBoard: (board: TBoard) => void;
 };
 
 export const useBoardsStore = create<BoardsState>((set) => ({
@@ -44,5 +45,9 @@ export const useBoardsStore = create<BoardsState>((set) => ({
 
   setBoards: (boards) => {
     set({ boards });
+  },
+
+  setBoard: (board) => {
+    set({ selectedBoard: board });
   },
 }));

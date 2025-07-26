@@ -1,6 +1,7 @@
+import type { TTask } from "../../../stores/useBoardsStore";
 import styles from "./Task.module.css";
 
-function Task() {
+function Task({ task }: { task: TTask }) {
   return (
     <li className={styles.task_item}>
       <button className={styles.task_button}>
