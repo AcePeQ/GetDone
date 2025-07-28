@@ -34,6 +34,32 @@ export async function createColumn(req: Request, res: Response) {
   }
 }
 
+export async function editColumn(req: Request, res: Response) {
+  try {
+    const { boardId, columnId, name, priority, color } = req.body;
+
+    if (!boardId || !columnId || !name.trim() || !priority || !color) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    await Column.findOneAndUpdate(
+      {
+        $and: [{ boardId, _id: columnId }],
+      },
+      {
+        name,
+        color,
+        position: priority,
+      }
+    );
+
+    res.status(200).json({ message: `Column ${name} updated sucessfully` });
+  } catch (error) {
+    console.error("Error in userBoards controller: ", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
 export async function deleteColumn(req: Request, res: Response) {
   try {
     const { boardId, columnId } = req.body;
