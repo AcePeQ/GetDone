@@ -26,7 +26,7 @@ export async function createColumn(req: Request, res: Response) {
 
     await newColumn.save();
 
-    res.status(200).json({ message: "Column sucessfully created" });
+    res.status(200).json({ message: `Column ${name} created sucessfully` });
   } catch (error) {
     console.error("Error in userBoards controller: ", error);
     res.status(500).json({ message: "Internal server error" });

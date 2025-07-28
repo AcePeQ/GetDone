@@ -28,7 +28,7 @@ function App() {
         limit={2}
         transition={Zoom}
         style={{
-          zIndex: "100000",
+          zIndex: "1000000",
         }}
       />
     </QueryClientProvider>

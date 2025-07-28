@@ -7,6 +7,7 @@ import Select from "react-select";
 import { useCreateColumn } from "../useCreateColumn";
 import { useBoardsStore } from "../../../stores/useBoardsStore";
 import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 const priorityOptions = [
   { value: 2, label: "High" },
@@ -46,12 +47,14 @@ function AddColumnForm({ onClose }: TAddColumnProps) {
     createColumn(
       { boardId, ...data },
       {
-        onSuccess: () => {
+        onSuccess: (data) => {
           onClose?.();
+
           queryClient.invalidateQueries({ queryKey: ["userBoards"] });
+          toast.success(data.message);
         },
-        onError: () => {
-          onClose?.();
+        onError: (error) => {
+          toast.error(error.message);
           reset();
         },
       }
