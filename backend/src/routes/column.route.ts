@@ -4,6 +4,6 @@ import { createColumn } from "../controllers/column.controller";
 
 const router = express.Router();
 
-router.get("/column", verifyToken, createColumn);
+router.post("/column", verifyToken, createColumn);
 
 export default router;

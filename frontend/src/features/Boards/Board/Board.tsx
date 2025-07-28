@@ -7,6 +7,16 @@ import styles from "./Board.module.css";
 function Board() {
   const { selectedBoard } = useBoardsStore();
 
+  console.log(selectedBoard);
+
+  if (!selectedBoard) {
+    return (
+      <div className={styles.boardEmpty}>
+        <p className={styles.emptyBoard}>Select the board</p>
+      </div>
+    );
+  }
+
   const columnsToDisplay = selectedBoard?.columns || [];
   return (
     <div className={styles.board}>

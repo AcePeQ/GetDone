@@ -11,7 +11,9 @@ function Boards() {
   const { isError, isPending, error, userBoards } = useGetBoards();
 
   useEffect(() => {
-    if (userBoards) setBoards(userBoards);
+    if (userBoards) {
+      setBoards(userBoards);
+    }
   }, [userBoards, setBoards]);
 
   if (isPending) {

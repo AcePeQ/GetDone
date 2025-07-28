@@ -4,6 +4,9 @@ import InputRow from "../../../components/InputRow/InputRow";
 import styles from "./AddColumnForm.module.css";
 import Button from "../../../components/Button/Button";
 import Select from "react-select";
+import { useCreateColumn } from "../useCreateColumn";
+import { useBoardsStore } from "../../../stores/useBoardsStore";
+import { useQueryClient } from "@tanstack/react-query";
 
 const priorityOptions = [
   { value: 2, label: "High" },
@@ -22,6 +25,9 @@ type TAddColumnProps = {
 };
 
 function AddColumnForm({ onClose }: TAddColumnProps) {
+  const queryClient = useQueryClient();
+  const { createColumn, isPending } = useCreateColumn();
+  const boardId = useBoardsStore((state) => state.selectedBoard?._id);
   const {
     register,
     handleSubmit,
@@ -35,7 +41,21 @@ function AddColumnForm({ onClose }: TAddColumnProps) {
   });
 
   const onSubmit: SubmitHandler<TAddColumnInputs> = (data) => {
-    console.log(data);
+    if (!boardId) return;
+
+    createColumn(
+      { boardId, ...data },
+      {
+        onSuccess: () => {
+          onClose?.();
+          queryClient.invalidateQueries({ queryKey: ["userBoards"] });
+        },
+        onError: () => {
+          onClose?.();
+          reset();
+        },
+      }
+    );
   };
 
   return (
@@ -90,14 +110,14 @@ function AddColumnForm({ onClose }: TAddColumnProps) {
       </InputRow>
 
       <div className={styles.buttons}>
-        <Button type="submit" buttonStyle="primary" isDisabled={false}>
+        <Button type="submit" buttonStyle="primary" isDisabled={isPending}>
           Add column
         </Button>
         <Button
           type="button"
           onClick={onClose}
           buttonStyle="secondary"
-          isDisabled={false}
+          isDisabled={isPending}
         >
           Close
         </Button>

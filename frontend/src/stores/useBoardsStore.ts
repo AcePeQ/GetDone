@@ -44,7 +44,11 @@ export const useBoardsStore = create<BoardsState>((set) => ({
   selectedBoard: null,
 
   setBoards: (boards) => {
-    set({ boards });
+    set((state) => ({
+      boards,
+      selectedBoard:
+        boards.find((board) => board._id === state.selectedBoard?._id) || null,
+    }));
   },
 
   setBoard: (board) => {
