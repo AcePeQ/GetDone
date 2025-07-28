@@ -1,0 +1,22 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+
+  gap: 2rem;
+
+  p {
+    font-size: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  margin-top: 0.5rem;
+}

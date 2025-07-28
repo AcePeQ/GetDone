@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Column from "../models/column.model";
+import Task from "../models/task.model";
 
 export async function createColumn(req: Request, res: Response) {
   try {
@@ -27,6 +28,27 @@ export async function createColumn(req: Request, res: Response) {
     await newColumn.save();
 
     res.status(200).json({ message: `Column ${name} created sucessfully` });
+  } catch (error) {
+    console.error("Error in userBoards controller: ", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export async function deleteColumn(req: Request, res: Response) {
+  try {
+    const { boardId, columnId } = req.body;
+
+    if (!boardId || !columnId) {
+      return res.status(400).json({ message: "Invalid board or column" });
+    }
+
+    await Column.findOneAndDelete({
+      $and: [{ _id: columnId }, { boardId }],
+    });
+
+    await Task.deleteMany({ columnId });
+
+    res.status(200).json({ message: `Column deleted sucessfully` });
   } catch (error) {
     console.error("Error in userBoards controller: ", error);
     res.status(500).json({ message: "Internal server error" });

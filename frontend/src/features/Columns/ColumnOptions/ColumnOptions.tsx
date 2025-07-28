@@ -5,7 +5,7 @@ import ColumnDeleteForm from "../ColumnDeleteForm/ColumnDeleteForm";
 
 function ColumnOptions({ columnId }: { columnId: string }) {
   return (
-    <button aria-label="column options">
+    <div tabIndex={0} aria-label="column options">
       <EllipsisVertical aria-disabled />
 
       <ul className={styles.menu}>
@@ -30,7 +30,7 @@ function ColumnOptions({ columnId }: { columnId: string }) {
           </ButtonCreate>
         </li>
       </ul>
-    </button>
+    </div>
   );
 }
 

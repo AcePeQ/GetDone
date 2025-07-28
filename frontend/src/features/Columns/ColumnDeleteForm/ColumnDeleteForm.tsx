@@ -41,9 +41,11 @@ function ColumnDeleteForm({ onClose, columnId }: TAddColumnProps) {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <p>Are you sure you want to delete this column?</p>
+
       <div className={styles.buttons}>
         <Button type="submit" buttonStyle="primary" isDisabled={isPending}>
-          Delete column
+          Delete
         </Button>
         <Button
           type="button"

@@ -36,10 +36,12 @@
 
   gap: 0.5rem;
 
-  & > button {
+  & > div {
     background: none;
     border: none;
     outline: none;
+
+    flex-shrink: 0;
 
     color: var(--color-text-secondary);
 
@@ -60,13 +62,13 @@
     }
   }
 
-  & > button:hover,
-  & > button:focus-visible {
+  & > div:hover,
+  & > div:focus-visible {
     color: var(--color-text-primary);
   }
 
-  & > button:hover,
-  & > button:focus-visible {
+  & > div:hover,
+  & > div:focus-visible {
     ul {
       display: flex !important;
       flex-direction: column;
