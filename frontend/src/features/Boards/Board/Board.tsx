@@ -7,8 +7,6 @@ import styles from "./Board.module.css";
 function Board() {
   const { selectedBoard } = useBoardsStore();
 
-  console.log(selectedBoard);
-
   if (!selectedBoard) {
     return (
       <div className={styles.boardEmpty}>

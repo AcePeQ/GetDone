@@ -10,6 +10,7 @@ type TButtonCreateProps = {
   buttonTitle: string;
   buttonStyle: string;
   children: ReactElement;
+  isIcon?: boolean;
 };
 
 function ButtonCreate({
@@ -17,6 +18,7 @@ function ButtonCreate({
   buttonTitle,
   buttonStyle,
   children,
+  isIcon = true,
 }: TButtonCreateProps) {
   const { isModalOpen, handleCloseModal, handleOpenModal } = useModal();
 
@@ -36,7 +38,7 @@ function ButtonCreate({
       </Modal>
 
       <button onClick={handleOpenModal} className={styles[buttonCSS]}>
-        <Plus className={styles.icon} />
+        {isIcon ? <Plus className={styles.icon} /> : null}
         {buttonTitle}
       </button>
     </>
