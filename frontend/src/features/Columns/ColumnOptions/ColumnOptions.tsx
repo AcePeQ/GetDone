@@ -1,8 +1,9 @@
 import { EllipsisVertical } from "lucide-react";
 import styles from "./ColumnOptions.module.css";
 import ButtonCreate from "../../../components/ButtonCreate/ButtonCreate";
+import ColumnDeleteForm from "../ColumnDeleteForm/ColumnDeleteForm";
 
-function ColumnOptions() {
+function ColumnOptions({ columnId }: { columnId: string }) {
   return (
     <button aria-label="column options">
       <EllipsisVertical aria-disabled />
@@ -25,7 +26,7 @@ function ColumnOptions() {
             buttonStyle="delete"
             isIcon={false}
           >
-            <div>Delete</div>
+            <ColumnDeleteForm columnId={columnId} />
           </ButtonCreate>
         </li>
       </ul>
