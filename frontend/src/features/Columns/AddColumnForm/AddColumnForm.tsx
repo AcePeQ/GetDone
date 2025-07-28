@@ -44,6 +44,11 @@ function AddColumnForm({ onClose }: TAddColumnProps) {
   const onSubmit: SubmitHandler<TAddColumnInputs> = (data) => {
     if (!boardId) return;
 
+    if (data.name.length <= 0 || data.name.length >= 20) {
+      toast.error("Column name must be less than 20 characters");
+      return;
+    }
+
     createColumn(
       { boardId, ...data },
       {

@@ -26,13 +26,17 @@
     font-size: 2rem;
     border-radius: 4px;
 
-    padding: 0.5rem 5rem 0.5rem 1rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
 
     background-color: var(--color-background-2);
 
     box-shadow: 0 4px 8px var(--color-background-2);
 
     transition: all 0.3s;
+  }
+
+  input[id="password"] {
+    padding: 0.5rem 5rem 0.5rem 1rem;
   }
 
   select {
