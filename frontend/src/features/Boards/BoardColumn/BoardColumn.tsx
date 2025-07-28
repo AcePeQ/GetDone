@@ -18,7 +18,7 @@ function BoardColumn({ column }: { column: TColumn }) {
           {column.name} ({tasksCount})
         </h3>
 
-        <ColumnOptions columnId={column._id} />
+        <ColumnOptions column={column} />
       </div>
 
       <ul className={styles.tasks}>

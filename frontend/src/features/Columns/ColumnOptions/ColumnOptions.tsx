@@ -2,8 +2,10 @@ import { EllipsisVertical } from "lucide-react";
 import styles from "./ColumnOptions.module.css";
 import ButtonCreate from "../../../components/ButtonCreate/ButtonCreate";
 import ColumnDeleteForm from "../ColumnDeleteForm/ColumnDeleteForm";
+import ColumnEditForm from "../ColumnEditForm/ColumnEditForm";
+import type { TColumn } from "../../../stores/useBoardsStore";
 
-function ColumnOptions({ columnId }: { columnId: string }) {
+function ColumnOptions({ column }: { column: TColumn }) {
   return (
     <div tabIndex={0} aria-label="column options">
       <EllipsisVertical aria-disabled />
@@ -16,7 +18,7 @@ function ColumnOptions({ columnId }: { columnId: string }) {
             buttonStyle="edit"
             isIcon={false}
           >
-            <div>Edit</div>
+            <ColumnEditForm column={column} />
           </ButtonCreate>
         </li>
         <li>
@@ -26,7 +28,7 @@ function ColumnOptions({ columnId }: { columnId: string }) {
             buttonStyle="delete"
             isIcon={false}
           >
-            <ColumnDeleteForm columnId={columnId} />
+            <ColumnDeleteForm columnId={column._id} />
           </ButtonCreate>
         </li>
       </ul>
