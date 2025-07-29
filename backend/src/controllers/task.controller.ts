@@ -15,9 +15,9 @@ export async function addTask(req: Request, res: Response) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const findColumn = await Task.findOne({ $and: [{ title }, { columnId }] });
+    const findTask = await Task.findOne({ $and: [{ title }, { columnId }] });
 
-    if (findColumn) {
+    if (findTask) {
       return res
         .status(400)
         .json({ message: "Task with this name already exists" });
@@ -34,6 +34,34 @@ export async function addTask(req: Request, res: Response) {
     await newTask.save();
 
     res.status(200).json({ message: `Task: ${title} created sucessfully` });
+  } catch (error) {
+    console.error("Error in addTask controller: ", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}
+
+export async function updateTask(req: Request, res: Response) {
+  try {
+    const { columnId, subTasks } = req.body;
+
+    if (!columnId || !subTasks) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const findTask = await Task.findOneAndUpdate(
+      { columnId },
+      { subTasks, columnId }
+    );
+
+    if (!findTask) {
+      return res.status(400).json({ message: "Task does not exist" });
+    }
+
+    await findTask.save();
+
+    res
+      .status(200)
+      .json({ message: `Task: ${findTask.title} edited sucessfully` });
   } catch (error) {
     console.error("Error in addTask controller: ", error);
     res.status(500).json({ message: "Internal server error" });

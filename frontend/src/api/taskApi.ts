@@ -34,7 +34,7 @@ export async function editTaskApi(editTaskData: TEditTaskData) {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      method: "UPDATE",
+      method: "PUT",
       body: JSON.stringify(editTaskData),
     });
 

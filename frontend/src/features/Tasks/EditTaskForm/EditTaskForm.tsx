@@ -50,7 +50,14 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
 
   useEffect(() => {
     const onSubmit: SubmitHandler<TEditTaskInputs> = (data) => {
-      editTask({ subTasks: data.subTasks, columnId: data.status });
+      editTask(
+        { subTasks: data.subTasks, columnId: data.status },
+        {
+          onSuccess: () =>
+            queryClient.invalidateQueries({ queryKey: ["userBoards"] }),
+          onError: (error) => toast.error(error.message),
+        }
+      );
     };
 
     const subscription = watch(() => handleSubmit(onSubmit)());
