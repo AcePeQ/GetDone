@@ -1,0 +1,73 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+
+  gap: 2rem;
+
+  width: 45rem;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+
+  margin-bottom: 2rem;
+}
+
+.buttons {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  margin-top: 0.5rem;
+}
+
+.subTaskRow {
+  display: flex;
+  align-items: center;
+
+  gap: 2rem;
+}
+
+.buttonRemoveSub {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  color: var(--color-text-secondary);
+
+  transition: all 0.3s;
+
+  svg {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+}
+
+.buttonRemoveSub:hover,
+.buttonRemoveSub:focus-visible {
+  color: var(--color-text-primary);
+}
+
+.subTasksWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .label {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+  }
+}

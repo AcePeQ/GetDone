@@ -14,7 +14,8 @@
   position: relative;
 
   input,
-  select {
+  select,
+  textarea {
     width: 100%;
     min-height: 4.4rem;
 
@@ -46,6 +47,10 @@
 
   select::after {
     left: 0;
+  }
+
+  textarea {
+    resize: vertical;
   }
 
   input:hover,

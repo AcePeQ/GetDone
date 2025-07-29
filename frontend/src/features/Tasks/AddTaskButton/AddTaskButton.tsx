@@ -1,13 +1,16 @@
-import { Plus } from "lucide-react";
-import Button from "../../../components/Button/Button";
+import ButtonCreate from "../../../components/ButtonCreate/ButtonCreate";
+import AddTaskForm from "../AddTaskForm/AddTaskForm";
 
 function AddTaskButton() {
   return (
-    <Button type="button" buttonStyle="secondary">
-      <>
-        <Plus /> Add new task
-      </>
-    </Button>
+    <ButtonCreate
+      modalTitle="Add New Task"
+      buttonTitle="Add New Task"
+      buttonStyle="task"
+      isIcon={true}
+    >
+      <AddTaskForm />
+    </ButtonCreate>
   );
 }
 

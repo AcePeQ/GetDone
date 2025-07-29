@@ -9,8 +9,8 @@ import { Eye, EyeOff } from "lucide-react";
 
 type InputRowProps = {
   error?: string;
-  id: string;
-  label: string;
+  id?: string;
+  label?: string;
   children: ReactElement<InputHTMLAttributes<HTMLInputElement>>;
 };
 
@@ -30,9 +30,11 @@ function InputRow({ error, id, label, children }: InputRowProps) {
 
   return (
     <div className={styles.row}>
-      <label htmlFor={id} className={styles.label}>
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={id} className={styles.label}>
+          {label}
+        </label>
+      )}
       <div className={styles.inputContainer}>
         {childrenInput}
         {id === "password" && (

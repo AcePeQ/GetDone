@@ -89,3 +89,33 @@
 .delete:focus-visible {
   background-color: var(--color-background-4);
 }
+
+.task {
+  background: none;
+  outline: none;
+  cursor: pointer;
+
+  border: 2px solid transparent;
+
+  font-size: 2.2rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+
+  border-radius: 6px;
+
+  transition: all 0.3s;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1rem;
+
+  background-color: var(--color-background-2);
+  color: var(--text-color-primary);
+}
+
+.task:hover,
+.task:focus-visible {
+  background-color: var(--color-background-4);
+}
