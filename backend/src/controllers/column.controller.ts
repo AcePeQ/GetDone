@@ -29,7 +29,7 @@ export async function createColumn(req: Request, res: Response) {
 
     res.status(200).json({ message: `Column ${name} created sucessfully` });
   } catch (error) {
-    console.error("Error in userBoards controller: ", error);
+    console.error("Error in createColumn controller: ", error);
     res.status(500).json({ message: "Internal server error" });
   }
 }
@@ -55,7 +55,7 @@ export async function editColumn(req: Request, res: Response) {
 
     res.status(200).json({ message: `Column ${name} updated sucessfully` });
   } catch (error) {
-    console.error("Error in userBoards controller: ", error);
+    console.error("Error in editColumn controller: ", error);
     res.status(500).json({ message: "Internal server error" });
   }
 }
@@ -76,7 +76,7 @@ export async function deleteColumn(req: Request, res: Response) {
 
     res.status(200).json({ message: `Column deleted sucessfully` });
   } catch (error) {
-    console.error("Error in userBoards controller: ", error);
+    console.error("Error in deleteColumn controller: ", error);
     res.status(500).json({ message: "Internal server error" });
   }
 }
