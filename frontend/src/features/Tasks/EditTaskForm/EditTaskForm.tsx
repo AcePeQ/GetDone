@@ -62,7 +62,7 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
 
     const subscription = watch(() => handleSubmit(onSubmit)());
     return () => subscription.unsubscribe();
-  }, [handleSubmit, watch, editTask]);
+  }, [handleSubmit, watch, editTask, queryClient]);
 
   const statusOptions = boardColumns?.map((column) => ({
     value: column._id,
