@@ -12,6 +12,8 @@ import Select from "react-select";
 import { useQueryClient } from "@tanstack/react-query";
 import { useBoardsStore } from "../../../stores/useBoardsStore";
 import { X } from "lucide-react";
+import { useAddTask } from "../useAddTask";
+import { toast } from "react-toastify";
 
 const priorityOptions = [
   { value: 2, label: "High" },
@@ -19,7 +21,7 @@ const priorityOptions = [
   { value: 0, label: "Low" },
 ];
 
-type TAddColumnInputs = {
+type TAddTaskInputs = {
   title: string;
   description: string;
   priority: number;
@@ -33,7 +35,7 @@ type TAddTaskProps = {
 
 function AddTaskForm({ onClose }: TAddTaskProps) {
   const queryClient = useQueryClient();
-  const boardId = useBoardsStore((state) => state.selectedBoard?._id);
+  const { addTask, isPending } = useAddTask();
   const boardColumns = useBoardsStore((state) => state.selectedBoard?.columns);
 
   const {
@@ -42,7 +44,7 @@ function AddTaskForm({ onClose }: TAddTaskProps) {
     control,
     reset,
     formState: { errors },
-  } = useForm<TAddColumnInputs>({
+  } = useForm<TAddTaskInputs>({
     defaultValues: {
       priority: 1,
       subTasks: [{ title: "" }],
@@ -62,10 +64,28 @@ function AddTaskForm({ onClose }: TAddTaskProps) {
     remove(index);
   }
 
-  const onSubmit: SubmitHandler<TAddColumnInputs> = (data) => {
-    if (!boardId) return;
+  const onSubmit: SubmitHandler<TAddTaskInputs> = (data) => {
+    addTask(
+      {
+        columnId: data.status,
+        title: data.title,
+        description: data.description,
+        subTasks: data.subTasks,
+        priority: data.priority,
+      },
+      {
+        onSuccess: (data) => {
+          onClose?.();
 
-    console.log(data);
+          queryClient.invalidateQueries({ queryKey: ["userBoards"] });
+          toast.success(data.message);
+        },
+        onError: (error) => {
+          toast.error(error.message);
+          reset();
+        },
+      }
+    );
   };
 
   const statusOptions = boardColumns?.map((column) => ({
@@ -197,14 +217,14 @@ function AddTaskForm({ onClose }: TAddTaskProps) {
       </div>
 
       <div className={styles.buttons}>
-        <Button type="submit" buttonStyle="primary" isDisabled={false}>
+        <Button type="submit" buttonStyle="primary" isDisabled={isPending}>
           Add
         </Button>
         <Button
           type="button"
           onClick={onClose}
           buttonStyle="secondary"
-          isDisabled={false}
+          isDisabled={isPending}
         >
           Close
         </Button>
