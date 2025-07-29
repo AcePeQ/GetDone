@@ -7,36 +7,36 @@ import {
 import InputRow from "../../../components/InputRow/InputRow";
 
 import styles from "./EditTaskForm.module.css";
-import Button from "../../../components/Button/Button";
 import Select from "react-select";
 import { useQueryClient } from "@tanstack/react-query";
 import { useBoardsStore, type TTask } from "../../../stores/useBoardsStore";
 
 import { toast } from "react-toastify";
 import { useEditTask } from "../useEditTask";
+import { useEffect } from "react";
 
-type TAddTaskInputs = {
+type TEditTaskInputs = {
   status: string;
-  subTasks: { title: string; isDone: boolean }[];
+  subTasks: { _id: string; title: string; isDone: boolean }[];
 };
 
-type TAddTaskProps = {
+type TEditTaskProps = {
   onClose?: () => void;
   selectedTask: TTask;
 };
 
-function EditTaskForm({ onClose, selectedTask }: TAddTaskProps) {
+function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
   const queryClient = useQueryClient();
-  const { editTask, isPending } = useEditTask();
+  const { editTask } = useEditTask();
   const boardColumns = useBoardsStore((state) => state.selectedBoard?.columns);
 
   const {
     register,
     handleSubmit,
     control,
-    reset,
+    watch,
     formState: { errors },
-  } = useForm<TAddTaskInputs>({
+  } = useForm<TEditTaskInputs>({
     defaultValues: {
       status: selectedTask.columnId,
       subTasks: selectedTask.subTasks,
@@ -48,7 +48,14 @@ function EditTaskForm({ onClose, selectedTask }: TAddTaskProps) {
     name: "subTasks",
   });
 
-  const onSubmit: SubmitHandler<TAddTaskInputs> = (data) => {};
+  useEffect(() => {
+    const onSubmit: SubmitHandler<TEditTaskInputs> = (data) => {
+      editTask({ subTasks: data.subTasks, columnId: data.status });
+    };
+
+    const subscription = watch(() => handleSubmit(onSubmit)());
+    return () => subscription.unsubscribe();
+  }, [handleSubmit, watch, editTask]);
 
   const statusOptions = boardColumns?.map((column) => ({
     value: column._id,
@@ -59,7 +66,7 @@ function EditTaskForm({ onClose, selectedTask }: TAddTaskProps) {
     <>
       <p className={styles.description}>{selectedTask.description}</p>
 
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.form}>
         <InputRow id="status" label="Status" error={errors.status?.message}>
           <Controller
             name="status"
