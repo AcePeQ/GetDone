@@ -1,0 +1,36 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+
+  gap: 2rem;
+
+  width: 100%;
+}
+
+.description {
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2rem;
+}
+
+.subTasksWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .label {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: 0.6px;
+  }
+}
