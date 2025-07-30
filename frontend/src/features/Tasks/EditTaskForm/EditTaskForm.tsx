@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import { useEditTask } from "../useEditTask";
 
 import Button from "../../../components/Button/Button";
+import TaskOptions from "../TaskOptions/TaskOptions";
 
 type TEditTaskInputs = {
   status: string;
@@ -74,6 +75,8 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
 
   return (
     <>
+      <TaskOptions selectedTask={selectedTask} />
+
       <p className={styles.description}>{selectedTask.description}</p>
 
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
