@@ -163,7 +163,7 @@ h6 {
   border: 2px solid transparent !important;
   border-radius: 4px !important;
   background-color: var(--color-background-2) !important;
-  box-shadow: 0 4px 8px var(--color-background-2) !important;
+  box-shadow: 0 4px 4px var(--color-background-1) !important;
   font-size: 2rem !important;
   color: inherit;
   cursor: pointer !important;
@@ -173,7 +173,7 @@ h6 {
 .react-select__control:hover,
 .react-select__control--is-focused {
   border: 2px solid var(--color-accent-violet-1) !important;
-  box-shadow: 0 4px 8px var(--color-background-2) !important;
+  box-shadow: 0 4px 4px var(--color-background-1) !important;
 }
 
 .has-value .react-select__control {
@@ -212,7 +212,7 @@ h6 {
   background-color: var(--color-background-2) !important;
   border: 2px solid var(--color-background-2) !important;
   border-radius: 4px !important;
-  box-shadow: 0 4px 8px var(--color-background-2) !important;
+  box-shadow: 0 4px 4px var(--color-background-1) !important;
   z-index: 9999 !important;
 }
 
