@@ -210,7 +210,8 @@ h6 {
 
 .react-select__menu {
   background-color: var(--color-background-2) !important;
-  border: 2px solid var(--color-background-2) !important;
+  /* border: 2px solid var(--color-background-2) !important; */
+  border: 2px solid var(--color-accent-violet-1) !important;
   border-radius: 4px !important;
   box-shadow: 0 4px 4px var(--color-background-1) !important;
   z-index: 9999 !important;
@@ -233,8 +234,6 @@ h6 {
   padding: 1rem !important;
   transition: all 0.3s !important;
   background-color: transparent !important;
-
-  border-radius: 4px !important;
 }
 
 .react-select__option:hover,
