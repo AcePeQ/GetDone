@@ -50,7 +50,7 @@
   top: 12px;
   right: 12px;
 
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
 
   cursor: pointer;
 
@@ -64,5 +64,5 @@
 
 .btnClose:hover,
 .btnClose:focus-visible {
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
 }

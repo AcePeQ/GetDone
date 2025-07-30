@@ -5,7 +5,7 @@
 }
 
 .label {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 500;
   letter-spacing: 0.6px;
 }
@@ -40,15 +40,6 @@
     padding: 0.5rem 5rem 0.5rem 1rem;
   }
 
-  select {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-
-  select::after {
-    left: 0;
-  }
-
   textarea {
     resize: vertical;
   }
@@ -62,7 +53,12 @@
   select:active,
   select:focus,
   select:focus-within,
-  select:not(:placeholder-shown) {
+  select:not(:placeholder-shown),
+  textarea:hover,
+  textarea:active,
+  textarea:focus,
+  textarea:focus-within,
+  textarea:not(:placeholder-shown) {
     border: 2px solid var(--color-accent-violet-1);
   }
 
@@ -107,10 +103,11 @@
 }
 
 .error {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 500;
+  letter-spacing: 0.25px;
 
-  padding-left: 1px;
+  padding-left: 2px;
   margin-top: 0.25rem;
 
   color: var(--color-red-1);

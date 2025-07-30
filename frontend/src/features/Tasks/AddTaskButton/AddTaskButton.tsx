@@ -4,7 +4,7 @@ import AddTaskForm from "../AddTaskForm/AddTaskForm";
 function AddTaskButton() {
   return (
     <ButtonCreate
-      modalTitle="Add New Task"
+      modalTitle="New Task"
       buttonTitle="Add New Task"
       buttonStyle="task"
       isIcon={true}
