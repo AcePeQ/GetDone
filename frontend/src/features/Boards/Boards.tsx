@@ -4,17 +4,10 @@ import { useGetBoards } from "./useGetBoards";
 import ButtonCreate from "../../components/ButtonCreate/ButtonCreate";
 import AddBoardForm from "./AddBoardForm/AddBoardForm";
 import { useBoardsStore, type TBoard } from "../../stores/useBoardsStore";
-import { useEffect } from "react";
 
 function Boards() {
-  const { boards, setBoards, setBoard, selectedBoard } = useBoardsStore();
+  const { setBoard, selectedBoard } = useBoardsStore();
   const { isError, isPending, error, userBoards } = useGetBoards();
-
-  useEffect(() => {
-    if (userBoards) {
-      setBoards(userBoards);
-    }
-  }, [userBoards, setBoards]);
 
   if (isPending) {
     return <p>Loading</p>;
@@ -24,8 +17,8 @@ function Boards() {
     return <p>Error: {error?.message || "Something went wrong"}</p>;
   }
 
-  const boardCount = boards?.length || 0;
-  const boardsToDisplay = boards && boards.length > 0 ? boards : [];
+  const boardsToDisplay = userBoards || [];
+  const boardCount = boardsToDisplay.length;
 
   return (
     <div className={styles.boards}>
