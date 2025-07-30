@@ -3,14 +3,15 @@
   flex-direction: column;
   justify-content: stretch;
 
-  gap: 2rem;
+  gap: 1.5rem;
 
   width: 100%;
 }
 
 .description {
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+
   color: var(--color-text-secondary);
   font-weight: 500;
   letter-spacing: 0.2px;
@@ -20,7 +21,7 @@
   display: flex;
   flex-direction: column;
 
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .subTasksWrapper {
@@ -36,13 +37,17 @@
 }
 
 .subTaskRow {
+  position: relative;
   display: flex;
 
   .subTaskInput {
-    appearance: none;
     visibility: hidden;
 
-    display: none;
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
   }
 
   label {
@@ -61,9 +66,11 @@
 
     background-color: var(--color-background-2);
 
-    box-shadow: 0 4px 8px var(--color-background-2);
+    box-shadow: 0 4px 4px var(--color-background-1);
 
     transition: all 0.3s;
+
+    cursor: pointer;
 
     position: relative;
   }
@@ -75,8 +82,8 @@
     top: 50%;
     left: 15px;
 
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.2rem;
 
     border-radius: 4px;
 
@@ -94,8 +101,8 @@
     top: 50%;
     left: 15px;
 
-    width: 2rem;
-    height: 2rem;
+    width: 2.2rem;
+    height: 2.2rem;
 
     border-radius: 4px;
 
@@ -108,9 +115,15 @@
     transition: all 0.3s;
   }
 
+  label:hover,
+  label:focus-visible {
+    border: 2px solid var(--color-accent-violet-1);
+  }
+
   .subTaskInput:checked + label {
     text-decoration: line-through;
     color: var(--color-text-secondary);
+    border: 2px solid var(--color-accent-violet-1);
   }
 
   .subTaskInput:checked + label::before {

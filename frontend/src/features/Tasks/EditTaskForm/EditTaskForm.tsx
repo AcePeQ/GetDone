@@ -134,7 +134,20 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
                           />
                         )}
                       />
-                      <label htmlFor={`subTasks.${index}.isDone`}>
+                      <label
+                        tabIndex={0}
+                        htmlFor={`subTasks.${index}.isDone`}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+
+                            const input = document.getElementById(
+                              `subTasks.${index}.isDone`
+                            ) as HTMLInputElement;
+                            input?.click();
+                          }
+                        }}
+                      >
                         {field.title}
                       </label>
                     </div>
