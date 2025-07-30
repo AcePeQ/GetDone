@@ -42,26 +42,24 @@ export async function addTask(req: Request, res: Response) {
 
 export async function updateTask(req: Request, res: Response) {
   try {
-    const { columnId, subTasks } = req.body;
+    const { taskId, columnId, subTasks } = req.body;
 
     if (!columnId || !subTasks) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    const findTask = await Task.findOneAndUpdate(
-      { columnId },
+    const updatedTask = await Task.findByIdAndUpdate(
+      { _id: taskId },
       { subTasks, columnId }
     );
 
-    if (!findTask) {
-      return res.status(400).json({ message: "Task does not exist" });
+    if (!updatedTask) {
+      return res.status(404).json({ message: "Task not found" });
     }
-
-    await findTask.save();
 
     res
       .status(200)
-      .json({ message: `Task: ${findTask.title} edited sucessfully` });
+      .json({ message: `Task: ${updateTask.name} updated sucessfully` });
   } catch (error) {
     console.error("Error in addTask controller: ", error);
     res.status(500).json({ message: "Internal server error" });

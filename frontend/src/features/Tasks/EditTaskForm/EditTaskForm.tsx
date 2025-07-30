@@ -13,7 +13,8 @@ import { useBoardsStore, type TTask } from "../../../stores/useBoardsStore";
 
 import { toast } from "react-toastify";
 import { useEditTask } from "../useEditTask";
-import { useEffect } from "react";
+
+import Button from "../../../components/Button/Button";
 
 type TEditTaskInputs = {
   status: string;
@@ -27,14 +28,12 @@ type TEditTaskProps = {
 
 function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
   const queryClient = useQueryClient();
-  const { editTask } = useEditTask();
+  const { editTask, isPending } = useEditTask();
   const boardColumns = useBoardsStore((state) => state.selectedBoard?.columns);
 
   const {
-    register,
     handleSubmit,
     control,
-    watch,
     formState: { errors },
   } = useForm<TEditTaskInputs>({
     defaultValues: {
@@ -48,21 +47,25 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
     name: "subTasks",
   });
 
-  useEffect(() => {
-    const onSubmit: SubmitHandler<TEditTaskInputs> = (data) => {
-      editTask(
-        { subTasks: data.subTasks, columnId: data.status },
-        {
-          onSuccess: () =>
-            queryClient.invalidateQueries({ queryKey: ["userBoards"] }),
-          onError: (error) => toast.error(error.message),
-        }
-      );
-    };
+  const onSubmit: SubmitHandler<TEditTaskInputs> = (data) => {
+    console.log(data);
 
-    const subscription = watch(() => handleSubmit(onSubmit)());
-    return () => subscription.unsubscribe();
-  }, [handleSubmit, watch, editTask, queryClient]);
+    editTask(
+      {
+        taskId: selectedTask._id,
+        subTasks: data.subTasks,
+        columnId: data.status,
+      },
+      {
+        onSuccess: (data) => {
+          queryClient.invalidateQueries({ queryKey: ["userBoards"] });
+          toast.success(data.message);
+          onClose?.();
+        },
+        onError: (error) => toast.error(error.message),
+      }
+    );
+  };
 
   const statusOptions = boardColumns?.map((column) => ({
     value: column._id,
@@ -73,7 +76,7 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
     <>
       <p className={styles.description}>{selectedTask.description}</p>
 
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <InputRow id="status" label="Status" error={errors.status?.message}>
           <Controller
             name="status"
@@ -95,9 +98,9 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
                 className={`react-select-container ${
                   field.value ? "has-value" : ""
                 }`}
-                onChange={(selectedOption) =>
-                  field.onChange(selectedOption?.value)
-                }
+                onChange={(selectedOption) => {
+                  field.onChange(selectedOption?.value);
+                }}
               />
             )}
           />
@@ -108,25 +111,51 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
 
           {fields.length > 0 && (
             <div className={styles.fields}>
-              {fields.map((field, index) => (
-                <InputRow
-                  key={field.id}
-                  error={errors.subTasks?.[index]?.title?.message}
-                >
-                  <div className={styles.subTaskRow}>
-                    <input
-                      {...register(`subTasks.${index}.title`, {
-                        required: "Subtask is required",
-                      })}
-                      type="text"
-                      id={`subTasks.${index}.title`}
-                      placeholder=" "
-                    />
-                  </div>
-                </InputRow>
-              ))}
+              {fields.map((field, index) => {
+                return (
+                  <InputRow
+                    key={field.id}
+                    error={errors.subTasks?.[index]?.title?.message}
+                  >
+                    <div className={styles.subTaskRow}>
+                      <Controller
+                        name={`subTasks.${index}.isDone`}
+                        control={control}
+                        render={({ field: checkboxField }) => (
+                          <input
+                            type="checkbox"
+                            id={`subTasks.${index}.isDone`}
+                            className={styles.subTaskInput}
+                            checked={checkboxField.value || false}
+                            onChange={(e) => {
+                              checkboxField.onChange(e.target.checked);
+                            }}
+                          />
+                        )}
+                      />
+                      <label htmlFor={`subTasks.${index}.isDone`}>
+                        {field.title}
+                      </label>
+                    </div>
+                  </InputRow>
+                );
+              })}
             </div>
           )}
+        </div>
+
+        <div className={styles.buttons}>
+          <Button type="submit" buttonStyle="primary" isDisabled={isPending}>
+            Save
+          </Button>
+          <Button
+            type="button"
+            onClick={onClose}
+            buttonStyle="secondary"
+            isDisabled={isPending}
+          >
+            Close
+          </Button>
         </div>
       </form>
     </>

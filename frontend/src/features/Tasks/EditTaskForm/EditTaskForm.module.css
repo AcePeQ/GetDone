@@ -34,3 +34,97 @@
     letter-spacing: 0.6px;
   }
 }
+
+.subTaskRow {
+  display: flex;
+
+  .subTaskInput {
+    appearance: none;
+    visibility: hidden;
+
+    display: none;
+  }
+
+  label {
+    width: 100%;
+    min-height: 4.4rem;
+
+    border: 2px solid transparent;
+    outline: none;
+
+    color: inherit;
+
+    font-size: 2rem;
+    border-radius: 4px;
+
+    padding: 0.5rem 1rem 0.5rem 5.5rem;
+
+    background-color: var(--color-background-2);
+
+    box-shadow: 0 4px 8px var(--color-background-2);
+
+    transition: all 0.3s;
+
+    position: relative;
+  }
+
+  label::after {
+    position: absolute;
+    content: "";
+
+    top: 50%;
+    left: 15px;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 4px;
+
+    background-color: var(--color-background-1);
+
+    transform: translateY(-50%);
+
+    z-index: 1;
+  }
+
+  label::before {
+    position: absolute;
+    content: "";
+
+    top: 50%;
+    left: 15px;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 4px;
+
+    background-color: var(--color-accent-violet-1);
+
+    transform: translateY(-50%) scale(0);
+
+    z-index: 2;
+
+    transition: all 0.3s;
+  }
+
+  .subTaskInput:checked + label {
+    text-decoration: line-through;
+    color: var(--color-text-secondary);
+  }
+
+  .subTaskInput:checked + label::before {
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.buttons {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  margin-top: 0.5rem;
+}
