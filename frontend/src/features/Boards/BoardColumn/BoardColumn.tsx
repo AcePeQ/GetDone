@@ -21,6 +21,8 @@ function BoardColumn({ column }: { column: TColumn }) {
         <ColumnOptions column={column} />
       </div>
 
+      {tasksCount === 0 && <p className={styles.tasksInfo}>No asigned tasks</p>}
+
       <ul className={styles.tasks}>
         {tasksToDisplay.map((task) => (
           <Task key={task._id} task={task} />

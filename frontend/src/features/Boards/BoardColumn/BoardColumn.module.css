@@ -78,6 +78,17 @@
   }
 }
 
+.tasksInfo {
+  text-align: center;
+
+  font-size: 2rem;
+  font-weight: 500;
+
+  color: var(--color-text-secondary);
+
+  letter-spacing: 0.5px;
+}
+
 .tasks {
   display: flex;
   flex-direction: column;
