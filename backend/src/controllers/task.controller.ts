@@ -65,3 +65,22 @@ export async function updateTask(req: Request, res: Response) {
     res.status(500).json({ message: "Internal server error" });
   }
 }
+
+export async function deleteTask(req: Request, res: Response) {
+  try {
+    const { taskId } = req.body;
+
+    if (!taskId) {
+      return res.status(400).json({ message: "TaskID is required" });
+    }
+
+    await Task.findOneAndDelete({ _id: taskId });
+
+    res
+      .status(200)
+      .json({ message: `Task: ${updateTask.name} deleted sucessfully` });
+  } catch (error) {
+    console.error("Error in addTask controller: ", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}

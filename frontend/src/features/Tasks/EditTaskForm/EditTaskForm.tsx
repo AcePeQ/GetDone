@@ -49,8 +49,6 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
   });
 
   const onSubmit: SubmitHandler<TEditTaskInputs> = (data) => {
-    console.log(data);
-
     editTask(
       {
         taskId: selectedTask._id,
@@ -75,7 +73,7 @@ function EditTaskForm({ onClose, selectedTask }: TEditTaskProps) {
 
   return (
     <>
-      <TaskOptions selectedTask={selectedTask} />
+      <TaskOptions onClose={onClose} selectedTask={selectedTask} />
 
       <p className={styles.description}>{selectedTask.description}</p>
 

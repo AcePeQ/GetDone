@@ -3,7 +3,6 @@ import { deleteTaskApi } from "../../api/taskApi";
 
 export type TDeleteTaskData = {
   taskId: string;
-  columnId: string;
 };
 
 export function useDeleteTask() {

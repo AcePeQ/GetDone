@@ -3,12 +3,33 @@ import { EllipsisVertical } from "lucide-react";
 import styles from "./TaskOptions.module.css";
 import type { TTask } from "../../../stores/useBoardsStore";
 import { useDeleteTask } from "../useDeleteTask";
+import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
 
-function TaskOptions({ selectedTask }: { selectedTask: TTask }) {
+function TaskOptions({
+  selectedTask,
+  onClose,
+}: {
+  selectedTask: TTask;
+  onClose?: () => void;
+}) {
+  const queryClient = useQueryClient();
   const { isPending, deleteTask } = useDeleteTask();
 
   function handleDeleteTask() {
-    deleteTask({ taskId: selectedTask._id, columnId: selectedTask.columnId });
+    deleteTask(
+      { taskId: selectedTask._id },
+      {
+        onSuccess: (data) => {
+          toast.success(data.messege);
+          queryClient.invalidateQueries({ queryKey: ["userBoards"] });
+          onClose?.();
+        },
+        onError: (error) => {
+          toast.error(error.message);
+        },
+      }
+    );
   }
 
   return (
