@@ -81,13 +81,15 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  font: inherit;
-  font-size: 2rem;
+  font: inherit !important;
+  font-size: 2rem !important;
 
-  border: 2px solid var(--color-accent-violet-1);
-  -webkit-text-fill-color: var(--color-text-primary);
-  -webkit-box-shadow: 0 0 0px 1000px var(--color-background-2) inset;
-  transition: background-color 300s ease-in-out 0s;
+  color: var(--color-text-primary) !important;
+
+  border: 2px solid var(--color-accent-violet-1) !important;
+  -webkit-text-fill-color: var(--color-text-primary) !important;
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-background-2) inset !important;
+  transition: background-color 300s ease-in-out 0s !important;
 }
 
 p,
@@ -210,7 +212,6 @@ h6 {
 
 .react-select__menu {
   background-color: var(--color-background-2) !important;
-  /* border: 2px solid var(--color-background-2) !important; */
   border: 2px solid var(--color-accent-violet-1) !important;
   border-radius: 4px !important;
   box-shadow: 0 4px 4px var(--color-background-1) !important;

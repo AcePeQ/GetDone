@@ -23,8 +23,8 @@ function Board() {
       ))}
 
       <ButtonCreate
-        modalTitle="Add New Column"
-        buttonTitle="Add new column"
+        modalTitle="New Column"
+        buttonTitle="Add New Column"
         buttonStyle="buttonNewColumn"
       >
         <AddColumnForm />

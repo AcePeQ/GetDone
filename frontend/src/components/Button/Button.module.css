@@ -5,6 +5,8 @@
 
   border: 2px solid transparent;
 
+  box-shadow: 0 4px 4px var(--color-background-1);
+
   font-size: 2rem;
   padding: 0.5rem 1rem;
   font-weight: 500;
