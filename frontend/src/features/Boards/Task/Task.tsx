@@ -8,12 +8,23 @@ function Task({ task }: { task: TTask }) {
   const { isModalOpen, handleCloseModal, handleOpenModal } = useModal();
 
   const countTasks = task.subTasks.length || 0;
+  const doneTasks = task.subTasks.reduce((acc, value) => {
+    if (value.isDone) {
+      return acc + 1;
+    } else {
+      return acc;
+    }
+  }, 0);
+
+  console.log(task);
 
   return (
     <li className={styles.task_item}>
       <button onClick={handleOpenModal} className={styles.task_button}>
         <span>{task.title}</span>
-        <span className={styles.tasksCount}>0 of {countTasks} subtasks</span>
+        <span className={styles.tasksCount}>
+          {doneTasks} of {countTasks} subtasks
+        </span>
       </button>
 
       <Modal onClose={handleCloseModal} isOpen={isModalOpen} title={task.title}>
