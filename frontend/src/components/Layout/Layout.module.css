@@ -22,3 +22,30 @@
     grid-row: 1/-1;
   }
 }
+
+@media screen and (max-width: 750px) {
+  .layout {
+    grid-template-columns: 30rem 1fr;
+  }
+}
+
+@media screen and (max-width: 685px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+  }
+
+  main {
+    grid-column: 1/-1;
+    grid-row: 2/3;
+  }
+
+  aside {
+    grid-column: unset;
+    grid-row: unset;
+  }
+}
