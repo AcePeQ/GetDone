@@ -121,3 +121,15 @@
 .task:focus-visible {
   background-color: var(--color-background-4);
 }
+
+@media screen and (max-width: 925px) {
+  .task {
+    background-color: var(--color-background-4);
+    color: var(--text-color-primary);
+  }
+
+  .task:hover,
+  .task:focus-visible {
+    background-color: var(--color-background-1);
+  }
+}

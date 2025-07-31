@@ -7,7 +7,7 @@ import { cloneElement, type ReactElement } from "react";
 
 type TButtonCreateProps = {
   modalTitle: string;
-  buttonTitle: string;
+  buttonTitle?: string;
   buttonStyle: string;
   children: ReactElement;
   isIcon?: boolean;
@@ -39,7 +39,7 @@ function ButtonCreate({
 
       <button onClick={handleOpenModal} className={styles[buttonCSS]}>
         {isIcon ? <Plus className={styles.icon} /> : null}
-        {buttonTitle}
+        {buttonTitle || <p className="sr-only">{buttonTitle}</p>}
       </button>
     </>
   );
