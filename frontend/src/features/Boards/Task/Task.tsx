@@ -2,6 +2,7 @@ import Modal from "../../../components/Modal/Modal";
 import useModal from "../../../hooks/useModal/useModal";
 import type { TTask } from "../../../stores/useBoardsStore";
 import EditTaskForm from "../../Tasks/EditTaskForm/EditTaskForm";
+
 import styles from "./Task.module.css";
 
 function Task({ task }: { task: TTask }) {
@@ -15,8 +16,6 @@ function Task({ task }: { task: TTask }) {
       return acc;
     }
   }, 0);
-
-  console.log(task);
 
   return (
     <li className={styles.task_item}>
