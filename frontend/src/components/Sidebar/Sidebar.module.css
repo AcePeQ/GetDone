@@ -10,13 +10,13 @@
   }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 815px) {
   .aside {
     padding-right: 2rem;
   }
 }
 
-@media screen and (max-width: 685px) {
+@media screen and (max-width: 750px) {
   .aside {
     position: absolute;
 
@@ -33,6 +33,20 @@
 
     visibility: none;
     pointer-events: none;
+  }
+
+  .logoWrapper {
+    position: relative;
+
+    & > button {
+      position: absolute;
+
+      top: 50%;
+
+      right: 0;
+
+      transform: translateY(-50%);
+    }
   }
 
   .open {

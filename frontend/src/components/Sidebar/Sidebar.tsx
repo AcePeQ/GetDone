@@ -7,21 +7,22 @@ import { X } from "lucide-react";
 import { useSidebarStore } from "../../stores/useSidebarStore";
 
 function Sidebar() {
-  const { toggleMenu } = useSidebarStore();
+  const { toggleMenu, menuOpen } = useSidebarStore();
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 925px)" });
 
   return (
-    <aside className={styles.aside}>
-      <Button
-        onClick={() => toggleMenu(false)}
-        buttonStyle="primary"
-        type="button"
-      >
-        <X />
-      </Button>
-
+    <aside className={`${styles.aside} ${menuOpen ? styles.open : ""}`}>
       <div className={styles.logoWrapper}>
         <Logo size="medium" />
+        {isTabletOrMobile && (
+          <Button
+            onClick={() => toggleMenu(false)}
+            buttonStyle="primary"
+            type="button"
+          >
+            <X />
+          </Button>
+        )}
       </div>
       <Boards />
     </aside>
