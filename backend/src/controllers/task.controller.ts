@@ -18,9 +18,7 @@ export async function addTask(req: Request, res: Response) {
     const findTask = await Task.findOne({ $and: [{ title }, { columnId }] });
 
     if (findTask) {
-      return res
-        .status(400)
-        .json({ message: "Task with this name already exists" });
+      return res.status(400).json({ message: "Task already exists" });
     }
 
     const newTask = new Task({
@@ -33,7 +31,7 @@ export async function addTask(req: Request, res: Response) {
 
     await newTask.save();
 
-    res.status(200).json({ message: `Task: ${title} created sucessfully` });
+    res.status(200).json({ message: `Task: ${title} created` });
   } catch (error) {
     console.error("Error in addTask controller: ", error);
     res.status(500).json({ message: "Internal server error" });
@@ -57,9 +55,7 @@ export async function updateTask(req: Request, res: Response) {
       return res.status(404).json({ message: "Task not found" });
     }
 
-    res
-      .status(200)
-      .json({ message: `Task: ${updateTask.name} updated sucessfully` });
+    res.status(200).json({ message: `Task: ${updateTask.name} updated` });
   } catch (error) {
     console.error("Error in addTask controller: ", error);
     res.status(500).json({ message: "Internal server error" });
@@ -71,14 +67,12 @@ export async function deleteTask(req: Request, res: Response) {
     const { taskId } = req.body;
 
     if (!taskId) {
-      return res.status(400).json({ message: "TaskID is required" });
+      return res.status(400).json({ message: "Task not found" });
     }
 
     await Task.findOneAndDelete({ _id: taskId });
 
-    res
-      .status(200)
-      .json({ message: `Task: ${updateTask.name} deleted sucessfully` });
+    res.status(200).json({ message: `Task: ${updateTask.name} deleted` });
   } catch (error) {
     console.error("Error in addTask controller: ", error);
     res.status(500).json({ message: "Internal server error" });

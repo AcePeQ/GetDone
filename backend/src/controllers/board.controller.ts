@@ -26,7 +26,7 @@ export async function createUserBoard(req: Request, res: Response) {
     const trimmedName = name.trim();
 
     if (!trimmedName) {
-      return res.status(400).json({ message: "Board name is empty" });
+      return res.status(400).json({ message: "Board name is required" });
     }
 
     const isBoardExists = await Board.findOne({
@@ -34,9 +34,7 @@ export async function createUserBoard(req: Request, res: Response) {
     });
 
     if (isBoardExists) {
-      return res
-        .status(409)
-        .json({ message: "Board with this name already exists" });
+      return res.status(409).json({ message: "Board already exists" });
     }
 
     const newBoard = new Board({
@@ -46,9 +44,7 @@ export async function createUserBoard(req: Request, res: Response) {
 
     await newBoard.save();
 
-    res
-      .status(200)
-      .json({ message: `${trimmedName} board sucessfully created` });
+    res.status(200).json({ message: `Board: ${trimmedName} created` });
   } catch (error) {
     console.error("Error in creating user board controller: ", error);
     res.status(500).json({ message: "Internal server error" });

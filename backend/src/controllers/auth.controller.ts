@@ -9,7 +9,7 @@ export async function login(req: Request, res: Response) {
     if (!email || !password) {
       return res
         .status(400)
-        .json({ message: "Email and password are required" });
+        .json({ message: "Email and password fields are required" });
     }
 
     const user = await User.findOne({ email: email });
@@ -91,7 +91,7 @@ export async function register(req: Request, res: Response) {
 
     return res
       .status(201)
-      .json({ message: "User accuont created successfully" });
+      .json({ message: `Account ${trimmingUsername} created` });
   } catch (error) {
     console.error("Error in register controller:", error);
     res.status(500).json({ message: "Internal server error" });
