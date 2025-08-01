@@ -4,10 +4,14 @@ import { useGetBoards } from "./useGetBoards";
 import ButtonCreate from "../../components/ButtonCreate/ButtonCreate";
 import AddBoardForm from "./AddBoardForm/AddBoardForm";
 import { useBoardsStore, type TBoard } from "../../stores/useBoardsStore";
+import { useSidebarStore } from "../../stores/useSidebarStore";
+import { useMediaQuery } from "react-responsive";
 
 function Boards() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 750px)" });
   const { setBoard, selectedBoard } = useBoardsStore();
   const { isError, isPending, error, userBoards } = useGetBoards();
+  const { toggleMenu } = useSidebarStore();
 
   if (isPending) {
     return <p>Loading</p>;
@@ -20,6 +24,10 @@ function Boards() {
   const boardsToDisplay = userBoards || [];
   const boardCount = boardsToDisplay.length;
 
+  function handleCloseSideBarMenu() {
+    toggleMenu(false);
+  }
+
   return (
     <div className={styles.boards}>
       <p className={styles.boards_heading}>All boards ({boardCount})</p>
@@ -28,7 +36,13 @@ function Boards() {
         {boardsToDisplay.map((board: TBoard) => (
           <li key={board._id} className={styles.item}>
             <button
-              onClick={() => setBoard(board)}
+              onClick={() => {
+                setBoard(board);
+
+                if (isTabletOrMobile) {
+                  handleCloseSideBarMenu();
+                }
+              }}
               className={`${styles.button} ${
                 board._id === selectedBoard?._id ? styles.active : ""
               }`}
