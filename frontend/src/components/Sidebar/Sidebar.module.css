@@ -3,25 +3,25 @@
 
   border-right: 2px solid var(--color-background-4);
 
-  padding-right: 4rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
 
   & .logoWrapper {
     padding-left: 2.5rem;
-  }
-}
-
-@media screen and (max-width: 815px) {
-  .aside {
-    padding-right: 2rem;
+    flex-shrink: 0;
   }
 }
 
 @media screen and (max-width: 750px) {
   .aside {
-    position: absolute;
+    position: fixed;
 
     width: 100%;
-    height: 100%;
+    height: 100dvh;
 
     z-index: 100;
 
@@ -31,7 +31,7 @@
 
     left: -100%;
 
-    visibility: none;
+    visibility: hidden;
     pointer-events: none;
   }
 
@@ -52,6 +52,7 @@
   .open {
     visibility: visible;
     pointer-events: initial;
+    position: fixed;
 
     left: 0%;
   }

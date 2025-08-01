@@ -8,7 +8,7 @@ import { useSidebarStore } from "../../stores/useSidebarStore";
 
 function Sidebar() {
   const { toggleMenu, menuOpen } = useSidebarStore();
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 925px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 750px)" });
 
   return (
     <aside className={`${styles.aside} ${menuOpen ? styles.open : ""}`}>

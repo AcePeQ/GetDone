@@ -5,6 +5,7 @@ import styles from "./AddBoardForm.module.css";
 import Button from "../../../components/Button/Button";
 import { useCreateBoard } from "../useCreateBoard";
 import { toast } from "react-toastify";
+import { useQueryClient } from "@tanstack/react-query";
 
 type TAddNewBoardInputs = {
   name: string;
@@ -15,6 +16,7 @@ type TBoardFormProps = {
 };
 
 function AddBoardForm({ onClose }: TBoardFormProps) {
+  const queryClient = useQueryClient();
   const { isPending, createBoard } = useCreateBoard();
 
   const {
@@ -28,6 +30,7 @@ function AddBoardForm({ onClose }: TBoardFormProps) {
     createBoard(data, {
       onSuccess: (data) => {
         toast.success(data.message);
+        queryClient.invalidateQueries({ queryKey: ["userBoards"] });
         onClose?.();
       },
       onError: (error) => {

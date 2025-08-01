@@ -1,5 +1,9 @@
 .boards {
   margin-top: 1rem;
+
+  padding-right: 2rem;
+
+  overflow: auto;
 }
 
 .boards_heading {
@@ -73,4 +77,10 @@
 .active {
   background-color: var(--color-accent-violet-1);
   color: var(--color-text-primary);
+}
+
+@media screen and (max-width: 750px) {
+  .list {
+    overflow: auto;
+  }
 }

@@ -10,7 +10,7 @@ import { useMediaQuery } from "react-responsive";
 import { useSidebarStore } from "../../stores/useSidebarStore";
 
 function Header() {
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 925px)" });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 750px)" });
 
   const username = useUserStore((state) => state.user?.username);
   const activeBoardName = useBoardsStore((state) => state.selectedBoard?.name);
