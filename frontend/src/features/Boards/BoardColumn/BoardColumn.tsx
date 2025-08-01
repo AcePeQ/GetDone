@@ -5,7 +5,8 @@ import ColumnOptions from "../../Columns/ColumnOptions/ColumnOptions";
 
 function BoardColumn({ column }: { column: TColumn }) {
   const tasksCount = column.tasks.length || 0;
-  const tasksToDisplay = column.tasks || [];
+  const tasksToDisplay =
+    column.tasks.sort((a, b) => b.priority - a.priority) || [];
   return (
     <article className={styles.column}>
       <div className={styles.column_header}>

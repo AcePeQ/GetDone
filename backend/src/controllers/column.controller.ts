@@ -6,7 +6,7 @@ export async function createColumn(req: Request, res: Response) {
   try {
     const { boardId, name, priority, color } = req.body;
 
-    if (!boardId || !name.trim() || !priority || !color) {
+    if (!boardId || !name.trim() || !color) {
       return res.status(400).json({ message: "All fields are required" });
     }
 
@@ -36,7 +36,7 @@ export async function editColumn(req: Request, res: Response) {
   try {
     const { boardId, columnId, name, priority, color } = req.body;
 
-    if (!boardId || !columnId || !name.trim() || !priority || !color) {
+    if (!boardId || !columnId || !name.trim() || !color) {
       return res.status(400).json({ message: "All fields are required" });
     }
 

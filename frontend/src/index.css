@@ -287,4 +287,6 @@ h6 {
 .Toastify__toast-theme--dark {
   background-color: var(--color-background-2);
   color: var(--color-text-primary);
+
+  font: inherit !important;
 }

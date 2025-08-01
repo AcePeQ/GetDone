@@ -15,7 +15,10 @@ function Board() {
     );
   }
 
-  const columnsToDisplay = selectedBoard?.columns || [];
+  const columnsToDisplay =
+    selectedBoard?.columns.sort((a, b) => b.position - a.position) || [];
+
+  console.log(columnsToDisplay);
   return (
     <div className={styles.board}>
       {columnsToDisplay.map((column) => (
