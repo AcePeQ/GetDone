@@ -32,6 +32,10 @@
   background-color: var(--color-accent-violet-2);
 }
 
+.primary:disabled {
+  background-color: var(--color-accent-violet-3);
+}
+
 .secondary {
   background-color: var(--color-background-2);
   color: var(--text-color-primary);
@@ -40,4 +44,8 @@
 .secondary:hover,
 .secondary:focus-visible {
   background-color: var(--color-background-4);
+}
+
+.secondary:disabled {
+  background-color: var(--color-background-3);
 }
