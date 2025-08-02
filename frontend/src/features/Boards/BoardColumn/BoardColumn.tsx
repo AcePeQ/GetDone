@@ -3,12 +3,19 @@ import Task from "../Task/Task";
 import styles from "./BoardColumn.module.css";
 import ColumnOptions from "../../Columns/ColumnOptions/ColumnOptions";
 
+import { motion } from "motion/react";
+
 function BoardColumn({ column }: { column: TColumn }) {
-  const tasksCount = column.tasks.length || 0;
+  const tasksCount = column.tasks?.length || 0;
   const tasksToDisplay =
-    column.tasks.sort((a, b) => b.priority - a.priority) || [];
+    column.tasks?.sort((a, b) => b.priority - a.priority) || [];
   return (
-    <article className={styles.column}>
+    <motion.article
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={styles.column}
+    >
       <div className={styles.column_header}>
         <h3>
           <span
@@ -29,7 +36,7 @@ function BoardColumn({ column }: { column: TColumn }) {
           <Task key={task._id} task={task} />
         ))}
       </ul>
-    </article>
+    </motion.article>
   );
 }
 

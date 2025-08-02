@@ -4,6 +4,9 @@ import AddColumnForm from "../../Columns/AddColumnForm/AddColumnForm";
 import BoardColumn from "../BoardColumn/BoardColumn";
 import styles from "./Board.module.css";
 
+import { AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
+
 function Board() {
   const { selectedBoard } = useBoardsStore();
 
@@ -19,18 +22,27 @@ function Board() {
     selectedBoard?.columns.sort((a, b) => b.position - a.position) || [];
 
   return (
-    <div className={styles.board}>
-      {columnsToDisplay.map((column) => (
-        <BoardColumn key={column._id} column={column} />
-      ))}
+    <div key={selectedBoard._id} className={styles.board}>
+      <AnimatePresence>
+        {columnsToDisplay.map((column) => (
+          <BoardColumn key={column._id} column={column} />
+        ))}
 
-      <ButtonCreate
-        modalTitle="New Column"
-        buttonTitle="Add New Column"
-        buttonStyle="buttonNewColumn"
-      >
-        <AddColumnForm />
-      </ButtonCreate>
+        <motion.div
+          layout
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          style={{ height: "100%" }}
+        >
+          <ButtonCreate
+            modalTitle="New Column"
+            buttonTitle="Add New Column"
+            buttonStyle="buttonNewColumn"
+          >
+            <AddColumnForm />
+          </ButtonCreate>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

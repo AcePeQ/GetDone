@@ -54,8 +54,8 @@ function AddColumnForm({ onClose }: TAddColumnProps) {
       {
         onSuccess: (data) => {
           onClose?.();
-
           queryClient.invalidateQueries({ queryKey: ["userBoards"] });
+
           toast.success(data.message);
         },
         onError: (error) => {
