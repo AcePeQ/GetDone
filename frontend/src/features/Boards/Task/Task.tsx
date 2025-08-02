@@ -3,6 +3,8 @@ import useModal from "../../../hooks/useModal/useModal";
 import type { TTask } from "../../../stores/useBoardsStore";
 import EditTaskForm from "../../Tasks/EditTaskForm/EditTaskForm";
 
+import { motion } from "motion/react";
+
 import styles from "./Task.module.css";
 
 function Task({ task }: { task: TTask }) {
@@ -18,7 +20,12 @@ function Task({ task }: { task: TTask }) {
   }, 0);
 
   return (
-    <li className={styles.task_item}>
+    <motion.li
+      layout
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className={styles.task_item}
+    >
       <button onClick={handleOpenModal} className={styles.task_button}>
         <span>{task.title}</span>
         <span className={styles.tasksCount}>
@@ -29,7 +36,7 @@ function Task({ task }: { task: TTask }) {
       <Modal onClose={handleCloseModal} isOpen={isModalOpen} title={task.title}>
         <EditTaskForm onClose={handleCloseModal} selectedTask={task} />
       </Modal>
-    </li>
+    </motion.li>
   );
 }
 
