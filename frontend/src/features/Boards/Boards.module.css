@@ -79,6 +79,15 @@
   color: var(--color-text-primary);
 }
 
+.error {
+  text-align: center;
+
+  font-size: 2rem;
+  font-weight: 500;
+
+  letter-spacing: 1px;
+}
+
 @media screen and (max-width: 750px) {
   .list {
     overflow: auto;

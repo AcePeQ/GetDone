@@ -20,7 +20,7 @@ function AuthPanel() {
     <AnimatePresence>
       <motion.div
         key={isLoginPanel ? 1 : 0}
-        initial={{ opacity: 0, y: 125 }}
+        initial={{ opacity: 0, y: 200 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         className={styles.container}

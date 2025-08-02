@@ -6,6 +6,7 @@ import AddBoardForm from "./AddBoardForm/AddBoardForm";
 import { useBoardsStore, type TBoard } from "../../stores/useBoardsStore";
 import { useSidebarStore } from "../../stores/useSidebarStore";
 import { useMediaQuery } from "react-responsive";
+import Loader from "../../components/Loader/Loader";
 
 function Boards() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 750px)" });
@@ -14,11 +15,15 @@ function Boards() {
   const { toggleMenu } = useSidebarStore();
 
   if (isPending) {
-    return <p>Loading</p>;
+    return <Loader />;
   }
 
   if (isError) {
-    return <p>Error: {error?.message || "Something went wrong"}</p>;
+    return (
+      <p className={styles.error}>
+        Error: {error?.message || "Something went wrong"}
+      </p>
+    );
   }
 
   const boardsToDisplay = userBoards || [];
