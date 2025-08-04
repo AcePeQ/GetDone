@@ -44,7 +44,9 @@ export async function createUserBoard(req: Request, res: Response) {
 
     await newBoard.save();
 
-    res.status(200).json({ message: `Board: ${trimmedName} created` });
+    res
+      .status(200)
+      .json({ message: `Board: ${trimmedName} created successfully` });
   } catch (error) {
     console.error("Error in creating user board controller: ", error);
     res.status(500).json({ message: "Internal server error" });

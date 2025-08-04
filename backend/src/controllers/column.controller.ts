@@ -25,7 +25,7 @@ export async function createColumn(req: Request, res: Response) {
 
     await newColumn.save();
 
-    res.status(200).json({ message: `Column: ${name} created` });
+    res.status(200).json({ message: `Column: ${name} created successfully` });
   } catch (error) {
     console.error("Error in createColumn controller: ", error);
     res.status(500).json({ message: "Internal server error" });
@@ -51,7 +51,7 @@ export async function editColumn(req: Request, res: Response) {
       }
     );
 
-    res.status(200).json({ message: `Column: ${name} updated` });
+    res.status(200).json({ message: `Column: ${name} updated successfully` });
   } catch (error) {
     console.error("Error in editColumn controller: ", error);
     res.status(500).json({ message: "Internal server error" });
@@ -72,7 +72,7 @@ export async function deleteColumn(req: Request, res: Response) {
 
     await Task.deleteMany({ columnId });
 
-    res.status(200).json({ message: `Column deleted` });
+    res.status(200).json({ message: `Column deleted successfully` });
   } catch (error) {
     console.error("Error in deleteColumn controller: ", error);
     res.status(500).json({ message: "Internal server error" });

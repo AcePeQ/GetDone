@@ -91,7 +91,7 @@ export async function register(req: Request, res: Response) {
 
     return res
       .status(201)
-      .json({ message: `Account ${trimmingUsername} created` });
+      .json({ message: `Account ${trimmingUsername} created successfully` });
   } catch (error) {
     console.error("Error in register controller:", error);
     res.status(500).json({ message: "Internal server error" });
