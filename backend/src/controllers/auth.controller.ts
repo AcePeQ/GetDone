@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
-import { generateToken } from "../utils/auth.util";
+import { clearJwtCookie, generateToken } from "../utils/auth.util";
 import bcrypt from "bcrypt";
 import User from "../models/user.model";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 export async function login(req: Request, res: Response) {
   try {
@@ -103,12 +100,7 @@ export async function register(req: Request, res: Response) {
 
 export async function logout(_: Request, res: Response) {
   try {
-    res.cookie("jwt", "", {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
-      maxAge: 0,
-    });
+    clearJwtCookie(res);
     res.status(200).json({ message: "Logout successfully" });
   } catch (error) {
     console.error("Error in logout controller:", error);

@@ -21,6 +21,7 @@ export function generateToken(userId: mongoose.Types.ObjectId, res: Response) {
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
       maxAge: SEVEN_DAYS_IN_MILLISECONDS,
+      path: "/",
     });
 
     return token;
@@ -30,4 +31,14 @@ export function generateToken(userId: mongoose.Types.ObjectId, res: Response) {
       error
     );
   }
+}
+
+export function clearJwtCookie(res: Response) {
+  res.clearCookie("jwt", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+    maxAge: 0,
+    path: "/",
+  });
 }
