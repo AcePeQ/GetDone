@@ -15,6 +15,7 @@ function ButtonLogout() {
       onSuccess: () => {
         sessionStorage.removeItem("user");
         logoutStore();
+        toast.success("Logged out");
         navigate("/", { replace: true });
       },
       onError: (error) => {

@@ -289,4 +289,6 @@ h6 {
   color: var(--color-text-primary);
 
   font: inherit !important;
+
+  top: 7.5rem !important;
 }
