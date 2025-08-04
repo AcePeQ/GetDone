@@ -13,10 +13,10 @@ import boardRouter from "./routes/board.route";
 import columnRouter from "./routes/column.route";
 import taskRouter from "./routes/task.route";
 
-env.config();
 const PORT = process.env.PORT;
 
 const app = express();
+env.config();
 
 app.use(
   cors({
