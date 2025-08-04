@@ -8,6 +8,9 @@ import { useSidebarStore } from "../../stores/useSidebarStore";
 import { useMediaQuery } from "react-responsive";
 import Loader from "../../components/Loader/Loader";
 
+import { AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
+
 function Boards() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 750px)" });
   const { setBoard, selectedBoard } = useBoardsStore();
@@ -38,35 +41,43 @@ function Boards() {
       <p className={styles.boards_heading}>All boards ({boardCount})</p>
 
       <ul className={styles.list}>
-        {boardsToDisplay.map((board: TBoard) => (
-          <li key={board._id} className={styles.item}>
-            <button
-              onClick={() => {
-                setBoard(board);
-
-                if (isTabletOrMobile) {
-                  handleCloseSideBarMenu();
-                }
-              }}
-              className={`${styles.button} ${
-                board._id === selectedBoard?._id ? styles.active : ""
-              }`}
+        <AnimatePresence>
+          {boardsToDisplay.map((board: TBoard) => (
+            <motion.li
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              key={board._id}
+              className={styles.item}
             >
-              <TablePropertiesIcon className={styles.icon} />
-              {board.name}
-            </button>
-          </li>
-        ))}
+              <button
+                onClick={() => {
+                  setBoard(board);
 
-        <li>
-          <ButtonCreate
-            modalTitle="Add New Board"
-            buttonTitle="Create new board"
-            buttonStyle="buttonNewBoard"
-          >
-            <AddBoardForm />
-          </ButtonCreate>
-        </li>
+                  if (isTabletOrMobile) {
+                    handleCloseSideBarMenu();
+                  }
+                }}
+                className={`${styles.button} ${
+                  board._id === selectedBoard?._id ? styles.active : ""
+                }`}
+              >
+                <TablePropertiesIcon className={styles.icon} />
+                {board.name}
+              </button>
+            </motion.li>
+          ))}
+
+          <motion.li layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <ButtonCreate
+              modalTitle="Add New Board"
+              buttonTitle="Create new board"
+              buttonStyle="buttonNewBoard"
+            >
+              <AddBoardForm />
+            </ButtonCreate>
+          </motion.li>
+        </AnimatePresence>
       </ul>
     </div>
   );
