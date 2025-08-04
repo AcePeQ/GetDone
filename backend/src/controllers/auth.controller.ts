@@ -2,6 +2,9 @@ import { Request, Response } from "express";
 import { generateToken } from "../utils/auth.util";
 import bcrypt from "bcrypt";
 import User from "../models/user.model";
+import env from "dotenv";
+
+env.config();
 
 export async function login(req: Request, res: Response) {
   try {
