@@ -45,7 +45,7 @@ The project was built as a learning and portfolio application, with a separate R
 
 ### Backend
 
-- Node.js
+- Node.js 24.22.1
 - Express
 - TypeScript
 - MongoDB
